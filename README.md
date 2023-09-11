@@ -1,5 +1,5 @@
-# OST landing page
-Landing page for the OST website
+# OST Landing Page
+Simple landing page for the [OST website](polaris.astro.physik.uni-potsdam.de)
 
 
 ## Attributions
