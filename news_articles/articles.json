@@ -1,0 +1,23 @@
+[
+    {
+      "filename": "C_2022_E3_ZTF.html",
+      "image_path": "news_articles/images/C2022E3ZTF.jpg",
+      "title": "Der „Grünen Komet",
+      "subtitle": "",
+      "publication_date": "2023-02-05"
+    },
+    {
+      "filename": "SN2023ixf.html",
+      "image_path": "news_articles/images/SN2023ixf.png",
+      "title": "Explosion am Nachthimmel",
+      "subtitle": "Eine der ersten Helligkeitsmessungen der Supernova SN2023ixf",
+      "publication_date": "2023-05-21"
+    },
+    {
+      "filename": "apo_first_light.html",
+      "image_path": "news_articles/images/moon_telescope.JPG",
+      "title": "Apochromat - First Light",
+      "subtitle": "Our new PHOTOLINE 130 mm f/7 EDT Triplet Apo",
+      "publication_date": "2023-01-15"
+    }
+]

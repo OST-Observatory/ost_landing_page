@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon"href="static/images/favicon.ico">
+    <link rel="icon" href="static/images/favicon.ico">
     <link href="static/css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="static/js/base.js"></script>
 
   </head>
 
@@ -40,88 +41,120 @@
         <div class='titel_right'>
           Observatory
         </div>
+
+        <div id="article-banner">
+        <!-- Banner content will be dynamically added here -->
+        </div>
       </div>
       <div class='content_container'>
         <div class='content_line'>
-          <div class='content_box' type="button" onclick="window.location.href = 'https://polaris.astro.physik.uni-potsdam.de/wiki'">
+          <div class='content_box' type="button" onclick="window.location.href = 'wiki/'">
             <div class='content_field'>
-              <img class='content_field_img' src="static/images/OST_family_tn.JPG" alt="OST telescope family">
+              <img class='content_field_img' src="static/images/OST_family_cropped.JPG" alt="OST telescope family">
             </div>
             <div class='content_text'>
-              <div class='conten_text_titel'>
+              <div class='content_text_titel'>
                 OST Wiki
               </div>
-              <div class='conten_text_description'>
+              <div class='content_text_description'>
                 Observatory description and laboratory course instructions
               </div>
             </div>
           </div>
-          <div class='content_box' type="button" onclick="window.location.href = 'https://polaris.astro.physik.uni-potsdam.de/gallery/'">
+          <div class='content_box' type="button" onclick="window.location.href = 'gallery/'">
             <div class='content_field'>
               <img class='content_field_img' src="static/images/messier33_tn.jpg" alt="Messier 33">
             </div>
             <div class='content_text'>
-              <div class='conten_text_titel'>
+              <div class='content_text_titel'>
                 OST Gallery
               </div>
-              <div class='conten_text_description'>
+              <div class='content_text_description'>
                 A selection of images taken with the OST
               </div>
             </div>
           </div>
         </div>
         <div class='content_line'>
-          <div class='content_box' type="button" onclick="window.location.href = 'https://polaris.astro.physik.uni-potsdam.de/weather_station/'">
-            <div class='content_field'>
-              <img class='content_field_img' src="static/images/temperature_tn.png" alt="Temperture diagramm">
+          <div class='content_box' type="button" onclick="window.location.href = 'allsky/'">
+            <div class='content_field dark'>
+              <img class='content_field_img' src="static/images/allsky.jpg" alt="All sky camera image">
             </div>
             <div class='content_text'>
-              <div class='conten_text_titel'>
-                Weather station
+              <div class='content_text_titel'>
+                All sky camera
               </div>
-              <div class='conten_text_description'>
-                Weather data collected at OST
+              <div class='content_text_description'>
+                Currently restricted access only
               </div>
             </div>
           </div>
-          <div class='content_box' type="button" onclick="window.location.href = 'https://polaris.astro.physik.uni-potsdam.de/ost_cameras/'">
+          <div class='content_box' type="button" onclick="window.location.href = 'ost_cameras/'">
             <div class='content_field'>
-              <img class='content_field_img' src="static/images/outdoor_feed_tn.jpg" alt="Outdoor camera view">
+              <img class='content_field_img' src="static/images/outdoor_feed_cropped.jpg" alt="Outdoor camera view">
             </div>
             <div class='content_text'>
-              <div class='conten_text_titel'>
+              <div class='content_text_titel'>
                 OST Camera Livefeeds
               </div>
-              <div class='conten_text_description'>
+              <div class='content_text_description'>
                 Restricted access only
               </div>
             </div>
           </div>
         </div>
         <div class='content_line'>
-          <div class='content_box' type="button" onclick="window.location.href = 'https://polaris.astro.physik.uni-potsdam.de/nextcloud'">
-            <div class='content_field dark'>
-              <img class='content_field_img' src="static/images/Nextcloud_Logo.svg" alt="Next cloud logo">
+          <div class='content_box' type="button" onclick="window.location.href = 'weather_station/'">
+            <div class='content_field'>
+              <img class='content_field_img' src="static/images/temperature_tn.png" alt="Temperature diagramm">
             </div>
             <div class='content_text'>
-              <div class='conten_text_titel'>
+              <div class='content_text_titel'>
+                Weather station
+              </div>
+              <div class='content_text_description'>
+                Weather data collected at OST
+              </div>
+            </div>
+          </div>
+          <div class='content_box' type="button" onclick="window.location.href = 'nextcloud/'">
+            <div class='content_field dark'>
+              <img class='content_field_img' src="static/images/clouds.jpg" alt="Next cloud logo">
+            </div>
+            <div class='content_text'>
+              <div class='content_text_titel'>
                 OST cloud
               </div>
-              <div class='conten_text_description'>
+              <div class='content_text_description'>
                 Restricted access only
               </div>
             </div>
           </div>
-          <div class='content_box' type="button" onclick="window.location.href = 'https://polaris.astro.physik.uni-potsdam.de/data_archive/'">
+        </div>
+        <div class='content_line'>
+          <div class='content_box' type="button" onclick="window.location.href = 'data_archive/'">
             <div class='content_field'>
               <img class='content_field_img opaque' src="static/images/Laptop-hard-drive-exposed.jpg" alt="Hard disk">
             </div>
             <div class='content_text'>
-              <div class='conten_text_titel'>
+              <div class='content_text_titel'>
                 Data archive
               </div>
-              <div class='conten_text_description'>
+              <div class='content_text_description'>
                 All data ever taken with the OST
+              </div>
+            </div>
+          </div>
+          <div class='content_box' type="button" onclick="window.location.href = 'news_articles/index.html'">
+            <div class='content_field'>
+              <img class='content_field_img opaque' src="static/images/news_archive.jpg" alt="Image file archive">
+            </div>
+            <div class='content_text'>
+              <div class='content_text_titel'>
+                News archive
+              </div>
+              <div class='content_text_description'>
+                Archive of news articles
               </div>
             </div>
           </div>
