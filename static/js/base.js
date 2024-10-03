@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-  let currentIndex = 0;
-
   function fetchArticles() {
     // Retrieve articles, sort by publication date, and get the 5 most recent.
     return fetch('news_articles/articles.json')
@@ -12,20 +10,17 @@ document.addEventListener("DOMContentLoaded", function() {
       .catch(error => console.error('Error fetching articles:', error));
   }
 
-  function rotateBanner(articles, bannerContainer) {
+  function rotateBanner(articles, bannerContainer, currentIndex) {
     // Remove the current article preview
     bannerContainer.innerHTML = '';
 
     // Add the next article preview
     const article = articles[currentIndex];
-    const articlePreview = createArticlePreview(article, articles, bannerContainer);
+    const articlePreview = createArticlePreview(article, articles, bannerContainer, currentIndex);
     bannerContainer.appendChild(articlePreview);
-
-    // Increment the index, and loop back to the first article if necessary
-    currentIndex = (currentIndex + 1) % articles.length;
   }
 
-  function createArticlePreview(article, articles, bannerContainer) {
+  function createArticlePreview(article, articles, bannerContainer, currentIndex) {
     const articlePreview = document.createElement('div');
     articlePreview.classList.add('article-preview');
 
@@ -55,21 +50,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
   window.togglePreview = async function(offset, totalArticles, currentIndex, bannerContainerId) {
     const newIndex = (currentIndex + offset + totalArticles) % totalArticles;
-    currentIndex = newIndex;
     const bannerContainer = document.getElementById(bannerContainerId);
     const articles = await fetchArticles(); // Wait for the articles to be fetched
-    rotateBanner(articles, bannerContainer);
+    rotateBanner(articles, bannerContainer, newIndex);
   };
 
   function initializeBanner() {
     // Fetch articles and initialize the banner
     const bannerContainer = document.getElementById('article-banner');
+    let currentIndex = 0;
     fetchArticles().then(articles => {
-      rotateBanner(articles, bannerContainer);
+      rotateBanner(articles, bannerContainer, currentIndex);
 
       // Set up a timer to rotate the banner every few seconds
       setInterval(() => {
-        rotateBanner(articles, bannerContainer);
+        // Increment the index, and loop back to the first article if necessary
+        currentIndex = (currentIndex + 1) % articles.length;
+
+        rotateBanner(articles, bannerContainer, currentIndex);
       }, 10000);  // Rotate every 10 seconds
     });
   }
