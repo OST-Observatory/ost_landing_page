@@ -9,6 +9,7 @@ function renderArticles(articles) {
     const articleGrid = document.getElementById('articleGrid');
 
     articles.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
+    articles.reverse();
 
     articles.forEach(article => {
       const articleElement = document.createElement('div');
