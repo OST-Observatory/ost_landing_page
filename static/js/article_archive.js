@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function renderArticles(articles) {
     const articleGrid = document.getElementById('articleGrid');
 
-    articles.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
-    articles.reverse();
+    articles.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date));
 
     articles.forEach(article => {
       const articleElement = document.createElement('div');

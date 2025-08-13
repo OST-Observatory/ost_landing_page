@@ -95,16 +95,7 @@ article header img {
     padding: 0rem;
 }
 
-/* Mobile-first styles - one column style only*/
-article .half-width-text,
-article .full-width-text {
-    margin: 1rem 0;
-}
-
-/* Clear the float to prevent text from wrapping around subsequent elements */
-article .clear-float {
-    clear: both;
-}
+/* Mobile-first styles */
 
 h1, h2 {
     font-family: Lato, sans-serif;
@@ -112,12 +103,10 @@ h1, h2 {
 
 article h1 {
     margin-top: 0;
-    break-after: column;
     font-size: 2.5rem;
 }
 
 article h2 {
-    break-after: column;
     font-size: 1.5rem;
 }
 
@@ -133,9 +122,10 @@ article p {
     text-align: justify;
     line-height: 1.4;
     margin: 0;
+    hyphens: auto;
 }
 
-article p:not(:first-of-type) {
+article p + p {
     text-indent: 1.4rem;
 }
 
@@ -152,66 +142,100 @@ p.credits {
     margin: 1rem 0;
 }
 
+/* ==========================
+   Flexible multi-column system
+   ========================== */
+.article-section {
+    margin: 1.5rem 0;
+}
+
+.multi-col {
+    --col-gap: 2rem;
+    column-gap: var(--col-gap);
+    column-fill: balance;
+}
+
+/* Default mobile: single column */
+.multi-col.cols-1,
+.multi-col.cols-2,
+.multi-col.cols-4 {
+    column-count: 1;
+}
+
+/* Tablet */
+@media only screen and (min-width: 768px) {
+    .multi-col.cols-2 { column-count: 2; }
+    .multi-col.cols-4 { column-count: 2; }
+}
+
+/* Desktop/wide */
+@media only screen and (min-width: 1200px) {
+    .multi-col.cols-4 { column-count: 4; }
+}
+
+/* Avoid awkward breaks for key elements */
+.multi-col h1,
+.multi-col h2,
+.multi-col img,
+.multi-col video {
+    break-inside: avoid-column;
+    -webkit-column-break-inside: avoid;
+    column-break-inside: avoid;
+}
+
+/* ==========================
+   Figure blocks that sit between text sections
+   (work consistently across browsers)
+   ========================== */
+.figure-block {
+    margin: 1.5rem auto;
+    text-align: center;
+}
+
+.figure-block img,
+.figure-block video {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Figure that spans all columns INSIDE a multi-col section */
+.figure {
+    -webkit-column-span: all;
+    column-span: all;
+    break-inside: avoid;
+    margin: 1.5rem 0;
+}
+.figure img,
+.figure video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* removed grid-4 helper per request */
+
+/* Spanning relative to a 4-column layout */
+.figure-block.span-1-of-4 { max-width: 25%; }
+.figure-block.span-2-of-4 { max-width: 50%; }
+.figure-block.span-4-of-4 { max-width: 100%; }
+
+/* Ensure figures are reasonable on small screens */
+@media only screen and (max-width: 767px) {
+    .figure-block.span-1-of-4,
+    .figure-block.span-2-of-4,
+    .figure-block.span-4-of-4 { max-width: 100%; }
+}
+
 /* Tablet styles */
 @media only screen and (min-width: 768px) {
     article header {
         margin-bottom: 2.5rem;
         padding-bottom: 1rem;
     }
-
-    /* Full-width text */
-    article .full-width-text {
-        column-count: 2;
-        column-gap: 2rem;
-    }
-
-    /* Half width general style */
-    article .half-width-style {
-        column-count: 2;
-        column-gap: 2rem;
-    }
-    article .half-width-style img {
-        padding: 0;
-    }
-
-    article .half-width-style img, article .half-width-style video {
-        margin: 0px;
-        padding: 1rem 0;
-    }
-
-    /* Text next to half-width image */
-    article .half-width-text {
-        column-count: 1;
-        column-gap: 2rem;
-        margin: 0;
-    }
 }
 
 /* Desktop styles */
 @media only screen and (min-width: 1024px) {
-    /* Text next to half-width image */
-    article .half-width-text {
-        column-count: 2;
-        column-gap: 2rem;
-        padding: 0rem 0rem 0rem 0rem;
-    }
-
-    /* Full-width text */
-    article .full-width-text {
-        column-count: 4;
-        column-gap: 2rem;
-    }
-
-    article img, article video {
-        width: 80%;
-        max-width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    article .half-width-style img, article .half-width-style video, article img.full, article video.full{
-        width: 100%;
-        max-width: 100%;
-        margin: 0px;
-    }
 }

@@ -93,6 +93,14 @@ body {
   background-size: cover;
 }
 
+/* Mobile fallback: avoid janky fixed backgrounds on iOS/Android */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    background-position: center top;
+  }
+}
+
 .main-container {
   display: flex;
   flex-wrap: wrap;
