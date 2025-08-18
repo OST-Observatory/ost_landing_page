@@ -135,6 +135,23 @@ p a {
     text-decoration: none;
 }
 
+/* Highlighted note paragraph + link styling */
+.highlight-note {
+    color: #c62828; /* red tone */
+    font-weight: 600;
+}
+.highlight-note .highlight-link,
+.highlight-note a {
+    color: #ff5252; /* vivid red */
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 700;
+}
+.highlight-note .highlight-link:hover,
+.highlight-note a:hover {
+    color: #ff1744;
+}
+
 p.credits {
     text-align: left;
     font-style: italic;
