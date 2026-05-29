@@ -1,5 +1,8 @@
 # OST Landing Page
-Simple landing page for the [OST website](polaris.astro.physik.uni-potsdam.de)
+
+Simple landing page for the [OST website](https://polaris.astro.physik.uni-potsdam.de).
+
+News articles live in a separate repository and are deployed into `news_articles/` on the server. See [news_articles/README.md](news_articles/README.md).
 
 
 ## Attributions

@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Customize the structure and styles based on your needs
     articlePreview.innerHTML = `
       <div class="image-container">
-        <img src="${article.image_path}" alt="${article.title}" onclick="window.location.href = 'news_articles/${article.filename}'">
+        <img src="news_articles/${article.image_path}" alt="${article.title}" onclick="window.location.href = 'news_articles/${article.filename}'">
         <div class="overlay">
           <div class="index-info">${currentIndex + 1} | ${articles.length}</div>
           <button class="toggle-button" onclick="togglePreview(-1, ${articles.length}, ${currentIndex}, '${bannerContainer.id}')">&#9664;</button>
