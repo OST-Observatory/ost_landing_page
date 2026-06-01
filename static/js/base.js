@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   let cachedArticles = null;
   let currentIndex = 0;
   let rotateTimer = null;
+  let rotationPaused = false;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function fetchArticles() {
     if (cachedArticles) {
@@ -40,6 +42,24 @@ document.addEventListener('DOMContentLoaded', function () {
     window.location.href = 'news_articles/' + filename;
   }
 
+  function stopRotation() {
+    if (rotateTimer !== null) {
+      clearInterval(rotateTimer);
+      rotateTimer = null;
+    }
+  }
+
+  function startRotation(articles) {
+    stopRotation();
+    if (prefersReducedMotion || rotationPaused || articles.length <= 1) {
+      return;
+    }
+    rotateTimer = setInterval(() => {
+      currentIndex = (currentIndex + 1) % articles.length;
+      rotateBanner(articles, currentIndex);
+    }, 10000);
+  }
+
   function rotateBanner(articles, index) {
     bannerContainer.replaceChildren();
 
@@ -53,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const img = document.createElement('img');
     img.src = 'news_articles/' + thumbnailPath(article);
     img.alt = article.title;
+    img.decoding = 'async';
     img.addEventListener('click', () => navigateToArticle(article.filename));
     imageContainer.appendChild(img);
 
@@ -74,6 +95,29 @@ document.addEventListener('DOMContentLoaded', function () {
       togglePreview(-1);
     });
     overlay.appendChild(prevButton);
+
+    if (!prefersReducedMotion && articles.length > 1) {
+      const pauseButton = document.createElement('button');
+      pauseButton.type = 'button';
+      pauseButton.className = 'toggle-button';
+      pauseButton.setAttribute('aria-pressed', rotationPaused ? 'true' : 'false');
+      pauseButton.setAttribute(
+        'aria-label',
+        rotationPaused ? 'Continue rotation' : 'Pause rotation'
+      );
+      pauseButton.textContent = rotationPaused ? '\u25B6' : '\u2759\u2759';
+      pauseButton.addEventListener('click', event => {
+        event.stopPropagation();
+        rotationPaused = !rotationPaused;
+        if (rotationPaused) {
+          stopRotation();
+        } else {
+          startRotation(articles);
+        }
+        rotateBanner(articles, currentIndex);
+      });
+      overlay.appendChild(pauseButton);
+    }
 
     const nextButton = document.createElement('button');
     nextButton.type = 'button';
@@ -118,6 +162,14 @@ document.addEventListener('DOMContentLoaded', function () {
     rotateBanner(cachedArticles, currentIndex);
   }
 
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopRotation();
+    } else if (cachedArticles && !rotationPaused) {
+      startRotation(cachedArticles);
+    }
+  });
+
   function initializeBanner() {
     fetchArticles()
       .then(articles => {
@@ -127,11 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         rotateBanner(articles, currentIndex);
-
-        rotateTimer = setInterval(() => {
-          currentIndex = (currentIndex + 1) % articles.length;
-          rotateBanner(articles, currentIndex);
-        }, 10000);
+        startRotation(articles);
       })
       .catch(error => {
         console.error('Error fetching articles:', error);
