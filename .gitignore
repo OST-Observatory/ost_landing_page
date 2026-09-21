@@ -1,25 +1,40 @@
-landing_page_test
-.htaccess
-baucam
-baucam2
-favicon.ico
-ftp
-gallery
-images
-kuppel_2018
-nextcloud
-ost_status
-ost_picture_gallery
-resources
-robots.txt
-talks
-talks_old
-wiki
-allsky
-weather_station
-data_archive
-news_articles
-.idea
-ost_events
-possible_thumbnails
-ost_landing_page.code-workspace
+# All patterns are anchored with a leading "/" on purpose.
+# An unanchored pattern such as "images" matches at *every* level and would
+# silently exclude static/images/ from the repository.
+
+# Local placeholders for services that live elsewhere on the server
+/allsky/
+/data_archive/
+/gallery/
+/inventory/
+/nextcloud/
+/ost_events/
+/ost_status/
+/weather_station/
+/wiki/
+
+# Content deployed from the ost_news repository
+/news_articles
+
+# Managed on the server, never committed
+/.htaccess
+/robots.txt
+
+# Legacy server directories that are not part of this repository
+/baucam/
+/baucam2/
+/ftp/
+/images/
+/kuppel_2018/
+/ost_picture_gallery/
+/resources/
+/talks/
+/talks_old/
+
+# Local scratch files (keep these outside the project folder, see docs/deployment.md)
+/landing_page_test/
+/possible_thumbnails/
+
+# Editor / IDE
+/.idea/
+/*.code-workspace

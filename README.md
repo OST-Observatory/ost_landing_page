@@ -2,10 +2,10 @@
 
 Simple landing page for the [OST website](https://polaris.astro.physik.uni-potsdam.de).
 
-News articles live in a separate repository and are deployed into `news_articles/` on the server. Clone [ost_news](https://github.com/) into that directory for local development:
+News articles live in a separate repository and are deployed into `news_articles/` on the server. Clone [ost_news](https://github.com/OST-Observatory/ost_news) into that directory for local development:
 
 ```bash
-git clone <ost_news-repo-url> news_articles
+git clone https://github.com/OST-Observatory/ost_news.git news_articles
 ```
 
 The folder `news_articles/` is listed in `.gitignore` and is not part of this repository.
@@ -17,19 +17,46 @@ The folder `news_articles/` is listed in `.gitignore` and is not part of this re
 ├── static/
 │   ├── css/base.css
 │   ├── js/base.js           # News banner on the home page
-│   ├── js/cookie-notice.js  # Essential-cookie information bar
+│   ├── about.html
+│   ├── impressum.html       # Legal notice (German / English)
+│   ├── datenschutz.html     # Privacy policy (German / English)
 │   ├── fonts/               # Open Sans + Lato (woff2)
 │   └── images/              # Thumbnails and background
+├── scripts/deploy.sh        # Deployment (runs on the server)
+├── docs/                    # Deployment and server notes — never published
 └── news_articles/           # Deploy: clone ost_news here
 ```
 
 ## Deployment
 
-1. Deploy this repository to the web root.
-2. Clone or pull **ost_news** into `news_articles/`.
-3. Sync `news_articles/images/` and `news_articles/images/thumbs/` on the server (see ost_news README).
+Deployment runs on the server from a checkout kept **outside** the web root:
+
+```bash
+cd /mnt/data/src/ost_landing_page
+./scripts/deploy.sh            # dry run — always read this first
+./scripts/deploy.sh --apply
+```
+
+Articles are deployed the same way from `ost_news`, and `news_articles/images/` is synced
+separately. Full description, including what the script refuses to do and why:
+[docs/deployment.md](docs/deployment.md).
+
+Server configuration (security headers, legacy paths, Content-Security-Policy):
+[docs/server-hardening.md](docs/server-hardening.md).
 
 HTTP cache examples for static assets and `articles.json`: [ost_news/docs/deploy-cache.md](../ost_news/docs/deploy-cache.md) (paths apply under `static/` and `news_articles/`).
+
+## Conventions
+
+- **Anchor every `.gitignore` pattern with a leading `/`.** An unanchored pattern such as
+  `images` matches at every level; it silently excluded `static/images/` from this repository
+  and left three images referenced by `index.html` uncommitted.
+- **Strip metadata from images before committing:** `exiftool -all= -overwrite_original file.jpg`.
+  The deploy script refuses to publish images carrying GPS or camera data.
+- **Keep scratch files outside the project folder.** `.gitignore` protects against git, not
+  against `scp -r`.
+- **The page runs under a strict Content-Security-Policy.** No inline `<script>`, no inline
+  `<style>`, no `style=` attributes, no resources from other hosts.
 
 ## Background image
 
@@ -47,11 +74,18 @@ ffmpeg -y -i ngc7000_cut_rotated_2.jpg -q:v 75 ngc7000_cut_rotated_2.webp
 ffmpeg -y -i ngc7000_cut_rotated_2.jpg -vf "scale=1280:-2" -q:v 80 ngc7000_cut_rotated_2_mobile.webp
 ```
 
-## Cookie notice
+## Cookies
 
-A small custom script (`static/js/cookie-notice.js`) informs visitors that only essential cookies are used. Dismissing the bar stores `ost_cookie_notice_ack` in `localStorage`.
+This site sets no cookies and uses no browser storage at all. There is deliberately no cookie
+banner: § 25 (2) no. 2 TDDDG exempts storage that is strictly necessary, and with nothing
+stored there is nothing to consent to. The required Art. 13 GDPR information about server
+logfiles lives in `static/datenschutz.html`.
 
-Linked services (Wiki, Nextcloud, cameras, etc.) may set their own cookies when opened.
+Keep it that way — adding `localStorage`, `sessionStorage` or a cookie means the privacy
+policy has to be updated with it.
+
+Linked services (Wiki, Nextcloud, cameras, etc.) set their own cookies when opened; they are
+covered by their own privacy information.
 
 ## Static images in this repo
 

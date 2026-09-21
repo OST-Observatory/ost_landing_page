@@ -10,6 +10,33 @@ document.addEventListener('DOMContentLoaded', function () {
   let rotationPaused = false;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // articles.json is maintained in a separate repository (ost_news). Validate every
+  // entry before use: a single malformed record must not take down the whole banner,
+  // and nothing from that file should be able to escape the news_articles/ prefix.
+  const SAFE_FILE = /^[A-Za-z0-9_-]+\.html$/;
+  const SAFE_IMAGE = /^images\/(thumbs\/)?[A-Za-z0-9_.-]+\.(jpe?g|png|webp)$/i;
+  const SAFE_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+  function thumbnailPath(article) {
+    return article.thumbnail_path || article.image_path;
+  }
+
+  function isValidArticle(article) {
+    return (
+      article !== null &&
+      typeof article === 'object' &&
+      typeof article.title === 'string' &&
+      article.title !== '' &&
+      (article.subtitle === undefined || typeof article.subtitle === 'string') &&
+      typeof article.filename === 'string' &&
+      SAFE_FILE.test(article.filename) &&
+      typeof article.publication_date === 'string' &&
+      SAFE_DATE.test(article.publication_date) &&
+      typeof thumbnailPath(article) === 'string' &&
+      SAFE_IMAGE.test(thumbnailPath(article))
+    );
+  }
+
   function fetchArticles() {
     if (cachedArticles) {
       return Promise.resolve(cachedArticles);
@@ -23,14 +50,23 @@ document.addEventListener('DOMContentLoaded', function () {
         return response.json();
       })
       .then(articles => {
-        articles.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date));
-        cachedArticles = articles.slice(0, 5);
+        if (!Array.isArray(articles)) {
+          throw new Error('articles.json is not an array');
+        }
+
+        const valid = articles.filter(article => {
+          if (isValidArticle(article)) {
+            return true;
+          }
+          // Surface the typo instead of letting the entry vanish silently.
+          console.warn('Skipping malformed article entry:', article);
+          return false;
+        });
+
+        valid.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date));
+        cachedArticles = valid.slice(0, 5);
         return cachedArticles;
       });
-  }
-
-  function thumbnailPath(article) {
-    return article.thumbnail_path || article.image_path;
   }
 
   function formatDate(publicationDate) {
