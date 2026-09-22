@@ -68,6 +68,8 @@ PASSED=0
 FAILED=0
 pass() { PASSED=$((PASSED + 1)); [ "$QUIET" -eq 1 ] || printf '  %sok  %s %s\n' "$GREEN" "$OFF" "$*"; }
 fail() { FAILED=$((FAILED + 1));                      printf '  %sFAIL%s %s\n' "$RED"   "$OFF" "$*"; }
+# A hint attached to the failure above. Prints, but is not a finding of its own.
+note() {                                              printf '       %s\n'          "$*"; }
 
 # ---------------------------------------------------------------------------
 # HTTP helpers. All of them swallow curl failures, so an unreachable host shows
@@ -76,10 +78,17 @@ fail() { FAILED=$((FAILED + 1));                      printf '  %sFAIL%s %s\n' "
 
 throttle() { [ "$DELAY" = "0" ] || sleep "$DELAY"; }
 
+# What Firefox and Chrome send. Every request uses it, so the script measures
+# the variant a real visitor receives rather than an uncompressed one nobody
+# gets. It matters for ETags: the compression filters append "-br" or "-gzip",
+# so a conditional request must negotiate the same encoding as the request that
+# handed out the validator.
+ACCEPT_ENC='gzip, deflate, br'
+
 # header_value <path> <header-name-lowercase>
 header_value() {
   throttle
-  curl -sI --max-time "$TIMEOUT" -H 'Accept-Encoding: gzip, br' "$BASE_URL/$1" 2>/dev/null \
+  curl -sI --max-time "$TIMEOUT" -H "Accept-Encoding: $ACCEPT_ENC" "$BASE_URL/$1" 2>/dev/null \
     | sed -n "s/^$2: //Ip" | tr -d '\r' | head -1 || true
 }
 
@@ -182,9 +191,13 @@ group_conditional() {
     fi
     throttle
     code="$(curl -s -o /dev/null -w '%{http_code}' --max-time "$TIMEOUT" \
-              -H "If-None-Match: $etag" "$BASE_URL/$p" 2>/dev/null)" || code="000"
+              -H "Accept-Encoding: $ACCEPT_ENC" -H "If-None-Match: $etag" \
+              "$BASE_URL/$p" 2>/dev/null)" || code="000"
     if [ "$code" = "304" ]; then
       pass "$(printf '%-44s 304' "/$p")"
+    elif printf '%s' "$etag" | grep -qE -- '-(br|gzip|deflate)"?$'; then
+      fail "$(printf '%-44s %s  the server will not accept the ETag it issued' "/$p" "$code")"
+      note "$etag carries a compression suffix — see BrotliAlterETag in caching.md"
     else
       fail "$(printf '%-44s %s  expected 304 — full body on every view' "/$p" "$code")"
     fi

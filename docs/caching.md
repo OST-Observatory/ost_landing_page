@@ -138,6 +138,33 @@ running them through Brotli spends CPU to make them marginally larger.
 an intermediate cache from handing a Brotli body to a client that asked for gzip, so do not
 strip it.
 
+### ETags and the compression suffix
+
+Both compression modules append the encoding to the `ETag` by default, so one file goes out
+as `"447b-65bfb4e5e8480"` uncompressed and `"447b-65bfb4e5e8480-br"` compressed. Apache then
+evaluates `If-None-Match` against the *unsuffixed* value, so a browser returning the exact
+validator it was handed never matches. Turn it off:
+
+```apache
+BrotliAlterETag  NoChange
+DeflateAlterETag NoChange
+```
+
+This matters most precisely because of the `no-cache` policy in section 2, which leans
+entirely on revalidation being cheap. Every 304 that should cost a few headers becomes a full
+download instead.
+
+Worse, it does not degrade quietly to `Last-Modified`. RFC 7232 requires a server to ignore
+`If-Modified-Since` whenever `If-None-Match` is present, so the broken validator actively
+suppresses the working one: a browser sending both gets `200` and the whole file, while the
+identical request with the `ETag` header removed gets `304`. The symptom to recognise is an
+uncompressed asset revalidating correctly while every compressed one does not.
+
+The formal objection to `NoChange` is that two byte streams then share one validator.
+`Vary: Accept-Encoding` is what keeps that honest, and it is emitted automatically wherever
+these filters apply. The alternative, `Remove`, drops the `ETag` altogether and falls back to
+`Last-Modified` — also correct, but a one-second-granularity validator and no `ETag` at all.
+
 ## 4. Video
 
 Leave `Accept-Ranges: bytes` enabled — it is Apache's default and it is what lets a viewer
