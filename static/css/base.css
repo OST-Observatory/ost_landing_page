@@ -993,3 +993,37 @@ body {
   font-style: italic;
   opacity: 0.85;
 }
+
+/* ---------------------------------------------------------------------------
+   LONG-FORM PAGES (impressum, datenschutz, about)
+
+   The Full HD block above is built for the landing page: it pins
+   .main-container to the viewport height, hides the overflow, and centres the
+   grid items so that one screen holds everything.
+
+   A page of prose does not fit that mould. Its text is taller than the
+   viewport, so `align-items: center` makes it overflow in *both* directions —
+   the top edge lands over the header and swallows the navigation clicks — while
+   `overflow: hidden` removes the scrollbar that would let you reach any of it.
+
+   Marked up as <main class="main-container text-page">.
+
+   Scoped to the same media query on purpose. Below 1920x1080 the base rules are
+   already correct, and a global `overflow: visible` would undo the
+   `overflow-x: clip` that keeps narrow viewports from scrolling sideways.
+   --------------------------------------------------------------------------- */
+@media screen and (min-width: 1920px) and (min-height: 1080px) {
+  .main-container.text-page {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .text-page .main_content {
+    align-items: start;
+  }
+
+  .text-page .content_container {
+    justify-content: flex-start;
+  }
+}
