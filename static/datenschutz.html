@@ -299,10 +299,12 @@
               Gruppenzugehörigkeit übernommen und für die Rechteverwaltung gespeichert.
               Änderungen an Beobachtungen, Objekten und Zugriffsrechten werden mit
               Benutzer und Zeitpunkt in einer Änderungshistorie und einem
-              Administrationsprotokoll festgehalten; beides wird derzeit nicht
-              automatisch gelöscht. Für Downloads wird ein Auftrag mit Benutzer (bei
-              Anmeldung) und Zeitpunkt gespeichert; das erzeugte ZIP-Archiv wird nach
-              72 Stunden gelöscht. Um anonyme Downloads zu begrenzen, wird ein
+              Administrationsprotokoll festgehalten. Nach zwei Jahren wird der Bezug zur
+              Person entfernt; die Einträge bleiben zur Nachvollziehbarkeit der Daten
+              ohne Benutzerangabe erhalten. Für Downloads wird ein Auftrag mit Benutzer
+              (bei Anmeldung) und Zeitpunkt gespeichert; das erzeugte ZIP-Archiv wird
+              nach 72 Stunden gelöscht, der Auftrag selbst 30 Tage später. Abgelaufene
+              Sitzungen werden täglich gelöscht. Um anonyme Downloads zu begrenzen, wird ein
               pseudonymisierter Wert (Hash) der IP-Adresse für eine Stunde
               zwischengespeichert.
             </p>
@@ -735,9 +737,11 @@
               address and group membership are taken from the directory service and
               stored for managing permissions. Changes to observation runs, objects and
               access rights are recorded with the user and time in a change history and
-              an administration log; neither is currently deleted automatically. For
-              downloads, a job with the user (when signed in) and time is stored; the ZIP
-              archive created is deleted after 72 hours. To limit anonymous downloads, a
+              an administration log. After two years the link to the person is removed;
+              the entries are kept without the user so that the data remains traceable.
+              For downloads, a job with the user (when signed in) and time is stored; the
+              ZIP archive created is deleted after 72 hours and the job itself 30 days
+              later. Expired sessions are deleted daily. To limit anonymous downloads, a
               pseudonymised value (hash) of the IP address is cached for one hour.
             </p>
             <p>
