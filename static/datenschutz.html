@@ -337,9 +337,8 @@
             <h3 id="weather-station">Wetterstation</h3>
             <p>
               Die Messwerte der Wetterstation sind ohne Anmeldung abrufbar und enthalten
-              keine personenbezogenen Daten. Beim Aufruf wird das technisch notwendige
-              Cookie <code>ost_weather_csrftoken</code> (Schutz vor Formularmissbrauch,
-              ein Jahr) gesetzt. Anzeigeeinstellungen und der Zeitpunkt der letzten
+              keine personenbezogenen Daten. Die öffentliche Seite setzt keine Cookies.
+              Anzeigeeinstellungen und der Zeitpunkt der letzten
               Aktualisierung werden im lokalen Speicher des Browsers abgelegt. Um die
               Seite vor Überlastung zu schützen, wird die IP-Adresse für höchstens zwei
               Minuten zwischengespeichert.
@@ -347,8 +346,12 @@
             <p>
               Der Verwaltungsbereich ist nur für Administratoren zugänglich. 
               Anmeldungen und fehlgeschlagene Anmeldeversuche werden dort mit
-              Benutzername, IP-Adresse und User-Agent protokolliert; diese Einträge
-              werden derzeit nicht automatisch gelöscht.
+              Benutzername, IP-Adresse und User-Agent protokolliert, um verdächtige
+              Anmeldungen erkennen zu können. Erfolgreiche Anmeldungen werden nach
+              30 Tagen gelöscht, fehlgeschlagene Anmeldeversuche nach Ablauf der
+              Sperrfrist von einer Stunde. Nach der Anmeldung wird das technisch
+              notwendige Sitzungscookie <code>ost_weather_sessionid</code> gesetzt;
+              abgelaufene Sitzungen werden täglich gelöscht.
             </p>
 
             <h3 id="news">Neuigkeiten</h3>
@@ -772,16 +775,19 @@
             <h3 id="en-weather-station">Weather station</h3>
             <p>
               The weather station’s readings are available without signing in and contain
-              no personal data. When the page is opened, the strictly necessary cookie
-              <code>ost_weather_csrftoken</code> (protection against form misuse, one
-              year) is set. Display settings and the time of the last refresh are stored
+              no personal data. The public page sets no cookies. Display settings and the
+              time of the last refresh are stored
               in the browser’s local storage. To protect the site against overload, the
               IP address is cached for no more than two minutes.
             </p>
             <p>
               The administration area is accessible only to administrators. Sign-ins and 
-              failed sign-in attempts are logged there with user name, IP address and user 
-              agent; these entries are currently not deleted automatically.
+              failed sign-in attempts are logged there with user name, IP address and user
+              agent so that suspicious sign-ins can be detected. Successful sign-ins are
+              deleted after 30 days, failed sign-in attempts once the lockout period of one
+              hour has passed. After signing in, the strictly necessary session cookie
+              <code>ost_weather_sessionid</code> is set; expired sessions are deleted
+              daily.
             </p>
 
             <h3 id="en-news">News</h3>
