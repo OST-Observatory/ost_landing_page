@@ -84,8 +84,34 @@ logfiles lives in `static/datenschutz.html`.
 Keep it that way — adding `localStorage`, `sessionStorage` or a cookie means the privacy
 policy has to be updated with it.
 
-Linked services (Wiki, Nextcloud, cameras, etc.) set their own cookies when opened; they are
-covered by their own privacy information.
+## Central privacy policy
+
+`static/datenschutz.html` is the privacy policy for the landing page **and** every service linked
+from it (Wiki, gallery, data archive, allsky, weather station, news, status dashboard, Nextcloud,
+inventory, event registration). A general part covers controller, contacts, logfiles and rights;
+each service then has a short section with only what it adds (sign-in, cookies, stored data,
+retention). The services link to their section instead of hosting their own policy:
+
+| Service | German anchor | English anchor |
+|---------|---------------|----------------|
+| Wiki | `#wiki` | `#en-wiki` |
+| Gallery | `#gallery` | `#en-gallery` |
+| Data archive | `#data-archive` | `#en-data-archive` |
+| Allsky | `#allsky` | `#en-allsky` |
+| Weather station | `#weather-station` | `#en-weather-station` |
+| News | `#news` | `#en-news` |
+| Status dashboard | `#status` | `#en-status` |
+| Nextcloud | `#nextcloud` | `#en-nextcloud` |
+| Inventory | `#inventory` | `#en-inventory` |
+| Event registration | `#events` | `#en-events` |
+
+Keep these ids stable — they are hard-coded in the other repositories (and `/ost_status/privacy`
+redirects to `#en-status`). The German text is authoritative; change both languages together.
+
+When a service changes what it stores, which cookies it sets or how long it keeps data, update
+its section here. The one exception is the camera notice of the status dashboard
+(`/ost_status/datenschutz`, repo ost_oms_presence): it is linked from the information sheet
+posted at the observatory and stays a separate page.
 
 ## Static images in this repo
 

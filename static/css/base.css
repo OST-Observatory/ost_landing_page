@@ -994,6 +994,31 @@ body {
   opacity: 0.85;
 }
 
+/* Datenschutz: the services link to their section by anchor, so the table of
+   contents and the second part ("Einzelne Dienste") need a little structure. */
+.legal_section .legal_part {
+  margin-top: 2.5rem;
+}
+
+.legal_toc {
+  margin: 0 0 1.5rem;
+  text-align: left;
+}
+
+.legal_toc p {
+  margin: 0.75rem 0 0.25rem;
+}
+
+.legal_toc ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.legal_section code {
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
 /* ---------------------------------------------------------------------------
    LONG-FORM PAGES (impressum, datenschutz, about)
 
