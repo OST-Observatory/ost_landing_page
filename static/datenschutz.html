@@ -467,8 +467,9 @@
             <p>
               <em>Verarbeitete Daten.</em> Name, E-Mail-Adresse, Anzahl der Personen und
               gewähltes Zeitfenster (Pflichtangaben) sowie Zeitpunkt der Anmeldung und
-              Bestätigung, IP-Adresse und User-Agent. Zum Schutz vor massenhaften
-              Anmeldungen wird die IP-Adresse außerdem für zwei Stunden gespeichert.
+              Bestätigung. Zum Schutz vor massenhaften Anmeldungen wird die IP-Adresse
+              getrennt davon für zwei Stunden gespeichert; mit der Anmeldung selbst wird
+              sie nicht gespeichert.
             </p>
             <p>
               <em>Ablauf.</em> Nach dem Absenden erhalten Sie eine E-Mail mit einem
@@ -486,17 +487,19 @@
               neuen Anmeldungen mit Namen und E-Mail-Adressen.
             </p>
             <p>
-              <em>Speicherdauer.</em> Personenbezogene Anmeldedaten werden spätestens
-              vier Wochen nach der Veranstaltung gelöscht bzw. anonymisiert. Erhalten
-              bleiben nur anonyme Statistiken (z. B. Zahl der Anmeldungen und
-              Teilnehmenden je Zeitfenster). Das Anwendungsprotokoll, das E-Mail-Adressen
-              enthält, wird höchstens sieben Tage aufbewahrt; Sicherungskopien der
-              Datenbank werden rollierend überschrieben.
+              <em>Speicherdauer.</em> Personenbezogene Anmeldedaten werden zwei Wochen
+              nach der Veranstaltung automatisch anonymisiert. Erhalten bleiben nur
+              anonyme Statistiken (z. B. Zahl der Anmeldungen und Teilnehmenden je
+              Zeitfenster). Sicherungskopien der Datenbank werden nach zwei Wochen
+              gelöscht, sodass die Anmeldedaten spätestens vier Wochen nach der
+              Veranstaltung auch dort nicht mehr vorhanden sind. Das Anwendungsprotokoll
+              enthält keine E-Mail-Adressen und wird höchstens sieben Tage aufbewahrt.
             </p>
             <p>
               <em>Cookie.</em> Beim Aufruf des Anmeldeformulars wird das technisch
-              notwendige Sitzungscookie <code>PHPSESSID</code> gesetzt, das das Formular
-              gegen Missbrauch schützt. Es wird beim Schließen des Browsers gelöscht.
+              notwendige Sitzungscookie <code>ost_events_session</code> gesetzt, das das
+              Formular gegen Missbrauch schützt. Es wird beim Schließen des Browsers
+              gelöscht.
             </p>
             <p>
               Ohne die Pflichtangaben ist eine Anmeldung nicht möglich.
@@ -898,8 +901,9 @@
             <p>
               <em>Data processed.</em> Name, e-mail address, number of persons and
               selected time slot (mandatory), as well as the time of registration and
-              confirmation, IP address and user agent. To protect against mass
-              registrations, the IP address is also stored for two hours.
+              confirmation. To protect against mass registrations, the IP address is
+              stored separately for two hours; it is not stored with the registration
+              itself.
             </p>
             <p>
               <em>Procedure.</em> After submitting the form you receive an e-mail with a
@@ -909,7 +913,7 @@
               code on the admission pass contains only a random code, no names or e-mail
               addresses; the time of check-in is stored at the entrance. If you cancel,
               your registration is deleted immediately. The e-mails are sent via the
-              observatory’s mail server.
+              university’s mail server.
             </p>
             <p>
               <em>Recipients.</em> Registrations are visible only to the organisers of
@@ -917,17 +921,18 @@
               e-mail addresses.
             </p>
             <p>
-              <em>Storage period.</em> Personal registration data is deleted or
-              anonymised at the latest four weeks after the event. Only anonymous
-              statistics (such as the number of registrations and participants per time
-              slot) are kept. The application log, which contains e-mail addresses, is
-              kept for no more than eight weeks; database backups are overwritten on a
-              rolling basis.
+              <em>Storage period.</em> Personal registration data is anonymised
+              automatically two weeks after the event. Only anonymous statistics (such as
+              the number of registrations and participants per time slot) are kept.
+              Database backups are deleted after two weeks, so the registration data is
+              gone from them too at the latest four weeks after the event. The
+              application log contains no e-mail addresses and is kept for no more than
+              seven days.
             </p>
             <p>
               <em>Cookie.</em> When the registration form is opened, the strictly
-              necessary session cookie <code>PHPSESSID</code> is set to protect the form
-              against misuse. It is deleted when you close the browser.
+              necessary session cookie <code>ost_events_session</code> is set to protect
+              the form against misuse. It is deleted when you close the browser.
             </p>
             <p>
               Registration is not possible without the mandatory details.
