@@ -161,6 +161,7 @@ body {
   color: lightgrey;
   text-decoration: none;
   font-size: 0.9em;
+  white-space: nowrap; /* keep "Legal Notice" on one line */
 }
 
 @media screen and (min-width: 700px) {
