@@ -113,6 +113,10 @@ its section here. The one exception is the camera notice of the status dashboard
 (`/ost_status/datenschutz`, repo ost_oms_presence): it is linked from the information sheet
 posted at the observatory and stays a separate page.
 
+The rules behind the stated periods (retention tiers, cookie lifetimes), the jobs that enforce
+them with a monthly check, open items and a checklist of where contact details appear are in
+[docs/data-protection.md](docs/data-protection.md).
+
 ## Static images in this repo
 
 | File | Use |

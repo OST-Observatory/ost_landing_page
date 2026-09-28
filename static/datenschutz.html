@@ -314,8 +314,9 @@
             </p>
             <p>
               Nach der Anmeldung werden die technisch notwendigen Cookies
-              <code>ostdata_sessionid</code> (Sitzung, höchstens 14 Tage) und
-              <code>ostdata_csrftoken</code> (Schutz vor Formularmissbrauch, ein Jahr)
+              <code>ostdata_sessionid</code> (Sitzung, höchstens 12 Stunden) und
+              <code>ostdata_csrftoken</code> (Schutz vor Formularmissbrauch, bis zum
+              Schließen des Browsers)
               gesetzt; letzteres auch vor einem anonymen Download. Die Wahl des
               Farbschemas wird im lokalen Speicher des Browsers abgelegt.
             </p>
@@ -353,8 +354,10 @@
               Benutzername, IP-Adresse und User-Agent protokolliert, um verdächtige
               Anmeldungen erkennen zu können. Erfolgreiche Anmeldungen werden nach
               30 Tagen gelöscht, fehlgeschlagene Anmeldeversuche nach Ablauf der
-              Sperrfrist von einer Stunde. Nach der Anmeldung wird das technisch
-              notwendige Sitzungscookie <code>ost_weather_sessionid</code> gesetzt;
+              Sperrfrist von einer Stunde. Die Anmeldeseite setzt das technisch
+              notwendige Cookie <code>ost_weather_csrftoken</code> (Schutz vor
+              Formularmissbrauch, bis zum Schließen des Browsers), die Anmeldung das
+              Sitzungscookie <code>ost_weather_sessionid</code> (höchstens 12 Stunden);
               abgelaufene Sitzungen werden täglich gelöscht.
             </p>
 
@@ -455,7 +458,8 @@
             </p>
             <p>
               Cookies: <code>ost_inventory_csrftoken</code> (Schutz vor
-              Formularmissbrauch, wird bereits auf der Anmeldeseite gesetzt, ein Jahr)
+              Formularmissbrauch, wird bereits auf der Anmeldeseite gesetzt, bis zum Schließen
+              des Browsers)
               und nach der Anmeldung <code>ost_inventory_sessionid</code> (Sitzung,
               12 Stunden). Die Wahl des Farbschemas wird im lokalen Speicher des Browsers
               abgelegt.
@@ -762,8 +766,9 @@
             </p>
             <p>
               After signing in, the strictly necessary cookies
-              <code>ostdata_sessionid</code> (session, at most 14 days) and
-              <code>ostdata_csrftoken</code> (protection against form misuse, one year)
+              <code>ostdata_sessionid</code> (session, at most 12 hours) and
+              <code>ostdata_csrftoken</code> (protection against form misuse, until the
+              browser is closed)
               are set; the latter also before an anonymous download. Your colour theme is
               stored in the browser’s local storage.
             </p>
@@ -798,9 +803,11 @@
               failed sign-in attempts are logged there with user name, IP address and user
               agent so that suspicious sign-ins can be detected. Successful sign-ins are
               deleted after 30 days, failed sign-in attempts once the lockout period of one
-              hour has passed. After signing in, the strictly necessary session cookie
-              <code>ost_weather_sessionid</code> is set; expired sessions are deleted
-              daily.
+              hour has passed. The sign-in page sets the strictly necessary cookie
+              <code>ost_weather_csrftoken</code> (protection against form misuse, until the
+              browser is closed), signing in the session cookie
+              <code>ost_weather_sessionid</code> (at most 12 hours); expired sessions are
+              deleted daily.
             </p>
 
             <h3 id="en-news">News</h3>
@@ -894,7 +901,8 @@
             </p>
             <p>
               Cookies: <code>ost_inventory_csrftoken</code> (protection against form
-              misuse, already set on the sign-in page, one year) and, after signing in,
+              misuse, already set on the sign-in page, until the browser is closed) and, after
+              signing in,
               <code>ost_inventory_sessionid</code> (session, 12 hours). Your colour theme
               is stored in the browser’s local storage.
             </p>
