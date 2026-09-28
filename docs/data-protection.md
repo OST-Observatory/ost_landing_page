@@ -23,6 +23,8 @@ New services and changes follow these rules; deviations need a reason in the ser
 | Event registrations | anonymise 14 days after the event, backups 14 days — **≤ 4 weeks** in total | `ost_events` |
 | Backups containing personal data | not longer than the data itself would be kept | `ost_events` backups (14 days) |
 | Data that is not needed | not collected | IP/user agent of event registrations, CSRF cookie for public pages |
+| Accounts of people who left (name/e-mail copied from LDAP) | deactivated and blanked within a day after the LDAP entry is gone | inventory, data archive |
+| Credits kept on purpose, **with consent** | permanent; withdrawal removes the name | gallery photographers, observing session log of the status dashboard |
 
 ### Cookies
 
@@ -45,28 +47,25 @@ the last column; replace unit names/paths if the server uses different ones).
 |---|---|---|---|---|
 | Server | journald, Apache logrotate | continuous / daily | logs older than 7 days | `journalctl --disk-usage`, `grep MaxRetentionSec /etc/systemd/journald.conf{,.d/*}`, `/etc/logrotate.d/apache2` |
 | Event registration (`ost_events`) | cron → `cron.php` | daily 08:00 | expired pending registrations; PII 14 days after the event; backups > 14 days; legacy `email_log` / IP data | `journalctl -t ost-events --since -35d \| grep "Data retention"` |
-| Inventory (`ost_inventory`) | systemd timer `ost-inventory-purge` → `manage.py purge_personal_data` | daily 03:30 | borrower data 1 year after return (+ admin log entries); expired sessions | `systemctl list-timers ost-inventory-purge.timer`, `journalctl -u ost-inventory-purge -n 20` |
-| Data archive (`ost_data_archive`) | Celery beat (`celery-beat.service` + worker `celery.service`) | hourly :15, daily 04:40, 04:50 | download ZIPs after 72 h, job rows 30 days later; expired sessions; user link in history/audit log after 2 years | `journalctl -u celery -u celery-beat --since -2d \| grep -E "Cleanup expired downloads\|Expired sessions\|Pseudonymise"`; health page shows `download_cleanup_enabled`, `personal_data_retention_enabled` |
+| Inventory (`ost_inventory`) | systemd timer `ost-inventory-purge` → `manage.py purge_personal_data`, then `deactivate_departed_ldap_users` | daily 03:30 | borrower data 1 year after return (+ admin log entries); expired sessions; accounts whose LDAP entry is gone (deactivated, name/e-mail cleared) | `systemctl list-timers ost-inventory-purge.timer`, `journalctl -u ost-inventory-purge -n 20` |
+| Data archive (`ost_data_archive`) | Celery beat (`celery-beat.service` + worker `celery.service`) | hourly :15, daily 04:40, 04:50, 04:55 | download ZIPs after 72 h, job rows 30 days later; expired sessions; user link in history/audit log after 2 years; accounts whose LDAP entry is gone (deactivated, name/e-mail cleared) | `journalctl -u celery -u celery-beat --since -2d \| grep -E "Cleanup expired downloads\|Expired sessions\|Pseudonymise\|Departed LDAP"`; health page shows `download_cleanup_enabled`, `personal_data_retention_enabled` |
 | Weather station | cron → `systemd-cat -t ost-weather-purge manage.py purge_personal_data` | daily 00:31 | expired sessions; admin sign-in logs > 30 days; expired failed-login records | `journalctl -t ost-weather-purge --since -2d` |
-| Status dashboard (`ost_oms_presence`) | — | — | login events: journal (7 days); **observing session log: no retention yet** (open item in its `TODO.md`) | — |
+| Status dashboard (`ost_oms_presence`) | — | — | login events: journal (7 days); observing session log kept permanently by consent (credits observers) | — |
 | Status dashboard cameras | outside these repositories | rolling | outdoor camera recordings after 48 h (stated in the camera notice) | verify on the recording host |
-| Gallery, news, allsky, landing page | — | — | no personal data beyond the web server logs; gallery names by consent, removed on request | — |
-| Wiki, Nextcloud | not reviewed yet | | see open items | |
+| Gallery (`ost_gallery`) | cron → `systemd-cat -t ost-gallery-build … gallery build` | daily 06:30 | build log goes to the journal (7 days); photographer names by consent, removed on request | `journalctl -t ost-gallery-build --since -2d` |
+| News, allsky, landing page | — | — | no personal data beyond the web server logs | — |
+| Wiki, Nextcloud | own settings | | link the central policy (done); retention settings see open items | |
 
 ## Open items
 
-- **Wiki and Nextcloud** do not link the central policy yet (Nextcloud: *Administration → Theming*,
-  privacy and legal notice URL → `/static/datenschutz.html#nextcloud`; DokuWiki: footer in the
-  template). Their retention is not stated: Nextcloud `activity_expire_days` (default 365),
-  trash bin/versions (`auto`), `nextcloud.log` rotation; DokuWiki keeps the IP address of every
-  edit in the page history without limit.
-- **Accounts of former members** in inventory and data archive keep name and e-mail copied from
-  LDAP forever (deletion is blocked by `PROTECT` foreign keys). Deactivate and blank them when the
-  account disappears from LDAP or has not been used for a set time.
-- **Observing session log** of the status dashboard has no retention (see its `TODO.md`).
+- **Nextcloud retention** is still at the defaults (no entries in `config.php`): activity log
+  365 days (`activity_expire_days`), trash bin and versions `auto` (kept as long as space allows),
+  `nextcloud.log` rotated by size only. Set values, then state them in the `#nextcloud` section.
+- **DokuWiki** keeps the IP address of every edit in the page history (`data/meta/*.changes`,
+  `data/media_meta/*.changes`) without limit. Options: the `anonip` plugin for new edits plus a
+  one-time clean-up of existing entries; then update the `#wiki` section.
 - **Server backups:** find out whether the host or its databases are backed up (university backup,
   `pg_dump`) and for how long; the policy says nothing about it yet.
-- **Gallery build log** (`/var/log/ost-gallery-build.log`) grows without rotation.
 
 ## Contact details — where they appear
 

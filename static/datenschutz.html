@@ -301,6 +301,9 @@
               Die Anmeldung erfolgt mit dem Sternwartenkonto. Dabei werden aus dem
               Verzeichnisdienst Benutzername, Name, E-Mail-Adresse und
               Gruppenzugehörigkeit übernommen und für die Rechteverwaltung gespeichert.
+              Wird das Sternwartenkonto gelöscht, wird das Konto im Archiv innerhalb eines
+              Tages deaktiviert; Name und E-Mail-Adresse werden entfernt, der
+              Benutzername bleibt in der Historie erhalten.
               Änderungen an Beobachtungen, Objekten und Zugriffsrechten werden mit
               Benutzer und Zeitpunkt in einer Änderungshistorie und einem
               Administrationsprotokoll festgehalten. Nach zwei Jahren wird der Bezug zur
@@ -400,12 +403,16 @@
               werden die dort eingegebene Bezeichnung, das Objekt, Beginn, Ende, Dauer
               und der Grund des Endes. Angemeldete Nutzende können das Protokoll
               einsehen. Es dient dazu, die Nutzung des Instruments und technische
-              Störungen im unbeaufsichtigten Betrieb nachvollziehen zu können.
-              <strong>Die Namensangabe ist freiwillig; ein vollständiger Name ist weder
-              nötig noch erwünscht.</strong> Ein Vorname oder bei Führungen eine
-              Gruppenbezeichnung genügt. Die Einträge werden aufbewahrt, solange die
-              Dokumentation der Nutzung dies erfordert, und derzeit nicht automatisch
-              gelöscht.
+              Störungen im unbeaufsichtigten Betrieb nachvollziehen zu können, und hält
+              fest, wer welche Beobachtung gemacht hat — damit die Beobachtenden genannt
+              werden können, wenn ihre Daten später in anderen Projekten oder
+              Veröffentlichungen verwendet werden. Rechtsgrundlage ist die Einwilligung
+              der Beobachtenden (Art. 6 Abs. 1 S. 1 lit. a DSGVO); sie kann jederzeit mit
+              Wirkung für die Zukunft widerrufen werden, dann entfernen wir den Namen aus
+              den betreffenden Einträgen. <strong>Die Namensangabe ist
+              freiwillig.</strong> Bei Führungen genügt eine Gruppenbezeichnung. Die
+              Einträge werden als Teil der Dokumentation der Beobachtungsdaten dauerhaft
+              aufbewahrt.
             </p>
 
             <h3 id="nextcloud">Cloud (Nextcloud)</h3>
@@ -433,7 +440,10 @@
               Passwort wird nicht im Inventar gespeichert, sondern zur Prüfung an den
               Verzeichnisdienst (LDAP) der Sternwarte übergeben; aus dem
               Verzeichnisdienst werden Benutzername, Name, E-Mail-Adresse und
-              Gruppenzugehörigkeit übernommen. Bei Gegenständen und
+              Gruppenzugehörigkeit übernommen. Wird das Sternwartenkonto gelöscht, wird
+              das Konto im Inventar innerhalb eines Tages deaktiviert; Name und
+              E-Mail-Adresse werden entfernt, der Benutzername bleibt in der Historie
+              erhalten. Bei Gegenständen und
               Inventuren wird gespeichert, wer sie angelegt, zuletzt geändert oder
               erfasst hat.
             </p>
@@ -755,7 +765,10 @@
             <p>
               You sign in with your observatory account. The user name, name, e-mail
               address and group membership are taken from the directory service and
-              stored for managing permissions. Changes to observation runs, objects and
+              stored for managing permissions. When the observatory account is deleted,
+              the archive account is deactivated within a day; name and e-mail address
+              are removed, the user name remains in the history. Changes to observation
+              runs, objects and
               access rights are recorded with the user and time in a change history and
               an administration log. After two years the link to the person is removed;
               the entries are kept without the user so that the data remains traceable.
@@ -846,12 +859,15 @@
               target and planned duration. What is stored is the designation entered
               there, the target, start, end, duration and the reason the session ended.
               Signed-in users can view the log. It serves to make the use of the
-              instrument and technical faults during unattended operation traceable.
-              <strong>Entering a name is voluntary; a full name is neither required nor
-              wanted.</strong> A first name, or a group designation for guided
-              observations, is sufficient. Entries are kept for as long as documenting
-              the use of the observatory requires and are currently not deleted
-              automatically.
+              instrument and technical faults during unattended operation traceable, and
+              records who made which observation — so that observers can be credited when
+              their data is later used in other projects or publications. The legal basis
+              is the observers' consent (Art. 6 (1) sentence 1 (a) GDPR); it can be
+              withdrawn at any time with effect for the future, in which case we remove
+              the name from the entries concerned. <strong>Entering a name is
+              voluntary.</strong> For guided observations a group designation is
+              sufficient. Entries are kept permanently as part of the documentation of the
+              observation data.
             </p>
 
             <h3 id="en-nextcloud">Cloud (Nextcloud)</h3>
@@ -878,7 +894,10 @@
               groups. You sign in with your observatory account. The password is not
               stored in the inventory; it is passed to the observatory directory service
               (LDAP) for verification. The user name, name, e-mail address and group
-              membership are taken from the directory service. For items and stocktakes,
+              membership are taken from the directory service. When the observatory
+              account is deleted, the inventory account is deactivated within a day; name
+              and e-mail address are removed, the user name remains in the history. For
+              items and stocktakes,
               the system records who created,
               last changed or scanned them.
             </p>
