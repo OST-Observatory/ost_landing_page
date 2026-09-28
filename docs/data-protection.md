@@ -21,7 +21,7 @@ New services and changes follow these rules; deviations need a reason in the ser
 | Security logs of sign-ins (who signed in from where, failed attempts) | **30 days**; failed-attempt counters only until the lockout ends | weather station admin (django-axes) |
 | Person-linked history kept for traceability (who changed what, who borrowed what, who observed) | pseudonymise or anonymise after **1–2 years**; keep the content | data archive history/audit log (2 years), inventory loans (1 year after return) |
 | Event registrations | anonymise 14 days after the event, backups 14 days — **≤ 4 weeks** in total | `ost_events` |
-| Backups containing personal data | not longer than the data itself would be kept | `ost_events` backups (14 days) |
+| Backups containing personal data | mirrors: current state only; database dumps ≤ 6 weeks; LDAP ≤ 60 days; nothing with a shorter promise (logs, event registrations, camera recordings) in backups kept longer than a day | server backups (`server_backup_scripts/polaris`), `ost_events` own backups (14 days) |
 | Data that is not needed | not collected | IP/user agent of event registrations, CSRF cookie for public pages |
 | Accounts of people who left (name/e-mail copied from LDAP) | deactivated and blanked within a day after the LDAP entry is gone | inventory, data archive |
 | Credits kept on purpose, **with consent** | permanent; withdrawal removes the name | gallery photographers, observing session log of the status dashboard |
@@ -46,6 +46,7 @@ the last column; replace unit names/paths if the server uses different ones).
 | Service | Job | Schedule | What it deletes / anonymises | Check |
 |---|---|---|---|---|
 | Server | journald, Apache logrotate | continuous / daily | logs older than 7 days | `journalctl --disk-usage`, `grep MaxRetentionSec /etc/systemd/journald.conf{,.d/*}`, `/etc/logrotate.d/apache2` |
+| Server backups (`server_backup_scripts/polaris`) | systemd timers `polaris-backup-{postgres,mariadb,ldap}` 23:30, `-local` 00:00, `-puppis` 02:00 (`-local-date` not enabled) | daily | PostgreSQL dumps ≤ 37 days (cleanup on every run), MariaDB dumps 30 days, LDAP 60 days; mirrors on `/mnt/backup` and `puppis` follow deletions daily; dated snapshots (if enabled) exclude logs, `/mnt/data/ost_events`, raw DB dirs | `systemctl list-timers 'polaris-backup-*'`, `journalctl -t mk_backup_local -t mk_backup_puppis -t mk_backup_ldap --since -2d`, `journalctl -u polaris-backup-postgres -u polaris-backup-mariadb --since -2d` |
 | Event registration (`ost_events`) | cron → `cron.php` | daily 08:00 | expired pending registrations; PII 14 days after the event; backups > 14 days; legacy `email_log` / IP data | `journalctl -t ost-events --since -35d \| grep "Data retention"` |
 | Inventory (`ost_inventory`) | systemd timer `ost-inventory-purge` → `manage.py purge_personal_data`, then `deactivate_departed_ldap_users` | daily 03:30 | borrower data 1 year after return (+ admin log entries); expired sessions; accounts whose LDAP entry is gone (deactivated, name/e-mail cleared) | `systemctl list-timers ost-inventory-purge.timer`, `journalctl -u ost-inventory-purge -n 20` |
 | Data archive (`ost_data_archive`) | Celery beat (`celery-beat.service` + worker `celery.service`) | hourly :15, daily 04:40, 04:50, 04:55 | download ZIPs after 72 h, job rows 30 days later; expired sessions; user link in history/audit log after 2 years; accounts whose LDAP entry is gone (deactivated, name/e-mail cleared) | `journalctl -u celery -u celery-beat --since -2d \| grep -E "Cleanup expired downloads\|Expired sessions\|Pseudonymise\|Departed LDAP"`; health page shows `download_cleanup_enabled`, `personal_data_retention_enabled` |
@@ -59,8 +60,7 @@ the last column; replace unit names/paths if the server uses different ones).
 
 ## Open items
 
-- **Server backups:** find out whether the host or its databases are backed up (university backup,
-  `pg_dump`) and for how long; the policy says nothing about it yet.
+None at the moment.
 
 ## Contact details — where they appear
 
@@ -70,11 +70,8 @@ update **all** places in the same go:
 | Detail | `static/datenschutz.html` (DE + EN) | `static/impressum.html` (DE + EN) | `ost_oms_presence/templates/datenschutz.html` (camera notice, DE) | Posted camera notice at the observatory (paper, QR code) |
 |---|---|---|---|---|
 | Controller: University of Potsdam, represented by the president (name) | ✓ | ✓ | ✓ | check |
-| University phone / fax | phone | phone, fax **+49 331 97 21 63** | phone, fax **+49 331 977-1089** | check |
+| University phone (no fax numbers anywhere — removed 2026-09) | ✓ | ✓ | ✓ | check |
 | Contact for data protection questions (Dr. Rainer Hainich) | ✓ | as person responsible for content | ✓ | check |
-| Data protection officer (Dr. Marek Kneis) | ✓ | — | ✓ (with fax) | check |
+| Data protection officer (Dr. Marek Kneis) | ✓ | — | ✓ | check |
 | Supervisory authority (LDA Brandenburg) | ✓ | — | named without address | — |
 | "Stand" / "Last updated" | ✓ | — | — | — |
-
-The two fax numbers of the university differ between the legal notice and the camera notice —
-one of them is outdated and needs checking.
