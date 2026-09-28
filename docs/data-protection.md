@@ -54,16 +54,11 @@ the last column; replace unit names/paths if the server uses different ones).
 | Status dashboard cameras | outside these repositories | rolling | outdoor camera recordings after 48 h (stated in the camera notice) | verify on the recording host |
 | Gallery (`ost_gallery`) | cron → `systemd-cat -t ost-gallery-build … gallery build` | daily 06:30 | build log goes to the journal (7 days); photographer names by consent, removed on request | `journalctl -t ost-gallery-build --since -2d` |
 | News, allsky, landing page | — | — | no personal data beyond the web server logs | — |
-| Wiki, Nextcloud | own settings | | link the central policy (done); retention settings see open items | |
+| Nextcloud | background jobs (cron mode) | daily | activity log > 90 days (`activity_expire_days`), trash bin > 30 days (`trashbin_retention_obligation` `auto, 30`), file versions > 1 year (`versions_retention_obligation` `auto, 365`); log to the journal (`log_type` `syslog`, 7 days) | `occ config:system:get activity_expire_days` etc.; *Administration → Basic settings* shows the last cron run |
+| Wiki (DokuWiki) | Hide IP plugin | on every edit | no IP addresses in the page history (stored as `0.0.0.0`); older entries purged with the plugin (2026-09) | `cut -f2 data/meta/_dokuwiki.changes \| sort -u` must show only `0.0.0.0` |
 
 ## Open items
 
-- **Nextcloud retention** is still at the defaults (no entries in `config.php`): activity log
-  365 days (`activity_expire_days`), trash bin and versions `auto` (kept as long as space allows),
-  `nextcloud.log` rotated by size only. Set values, then state them in the `#nextcloud` section.
-- **DokuWiki** keeps the IP address of every edit in the page history (`data/meta/*.changes`,
-  `data/media_meta/*.changes`) without limit. Options: the `anonip` plugin for new edits plus a
-  one-time clean-up of existing entries; then update the `#wiki` section.
 - **Server backups:** find out whether the host or its databases are backed up (university backup,
   `pg_dump`) and for how long; the policy says nothing about it yet.
 
