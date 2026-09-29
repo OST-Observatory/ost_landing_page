@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OST Observatory — Datenschutz / Privacy</title>
+    <title>OST Observatory — Privacy / Datenschutz</title>
 
     <link rel="icon" href="images/favicon.ico">
     <link href="css/base.css" rel="stylesheet" type="text/css">
@@ -37,14 +37,18 @@
       </div>
     </div>
 
-    <div class=main_content>
+    <!-- One title per language, placed next to where that language's text starts
+         (legal_page: grid rows of title + text box). English first, German below;
+         the German version is authoritative. -->
+    <div class="main_content legal_page">
       <div class='titel_container'>
-        <div class='titel_right'>
-          Datenschutz
+        <div class='titel_right' lang="en">
+          Privacy
         </div>
       </div>
       <div class='content_container center'>
         <div class='text_box'>
+
 
           <!--
             Central privacy policy for the landing page and every service linked from it.
@@ -54,12 +58,488 @@
             posted information sheet at the observatory.
           -->
 
+          <section class="legal_section" lang="en">
+            <h2 id="en-privacy">Privacy Policy</h2>
+            <p class="legal_note">
+              This is a courtesy translation. In case of discrepancies, the
+              <a href="#datenschutzerklaerung">German version below</a> prevails.
+            </p>
+            <p class="legal_note">
+              Information on the processing of personal data pursuant to Art. 13 GDPR for
+              this website and the observatory services that can be reached from it.
+              Last updated: September 2026.
+            </p>
+
+            <nav class="legal_toc" aria-label="Contents">
+              <p><strong>General information</strong></p>
+              <ul>
+                <li><a href="#en-controller">Controller and contacts</a></li>
+                <li><a href="#en-logfiles">Logfiles</a></li>
+                <li><a href="#en-cookies">Cookies, external content</a></li>
+                <li><a href="#en-backups">Backups</a></li>
+                <li><a href="#en-rights">Your rights</a></li>
+              </ul>
+              <p><strong>Individual services</strong></p>
+              <ul>
+                <li><a href="#en-wiki">Wiki</a></li>
+                <li><a href="#en-gallery">Image gallery</a></li>
+                <li><a href="#en-data-archive">Data archive</a></li>
+                <li><a href="#en-allsky">Allsky camera</a></li>
+                <li><a href="#en-weather-station">Weather station</a></li>
+                <li><a href="#en-news">News</a></li>
+                <li><a href="#en-status">Status dashboard</a></li>
+                <li><a href="#en-nextcloud">Cloud (Nextcloud)</a></li>
+                <li><a href="#en-inventory">Inventory</a></li>
+                <li><a href="#en-events">Event registration</a></li>
+              </ul>
+            </nav>
+
+            <h3>Scope</h3>
+            <p>
+              This privacy policy applies to the website of the Observatory (OST) of the 
+              University of Potsdam and to all services operated at this address. The general
+              part applies to all services; what individual services process in addition
+              is described in the respective section.
+            </p>
+            <p>
+              A separate <a href="../ost_status/datenschutz">privacy notice on the camera
+              surveillance</a> (German) applies to the video surveillance of the
+              observatory.
+            </p>
+
+            <h3 id="en-controller">Controller</h3>
+            <address>
+              University of Potsdam<br>
+              represented by its President, Prof. Oliver Günther, Ph.D.<br>
+              Am Neuen Palais 10<br>
+              14469 Potsdam, Germany<br>
+              Phone: +49 331 977-0<br>
+              Internet: <a href="https://www.uni-potsdam.de">www.uni-potsdam.de</a>
+            </address>
+            <p>
+              This website and the services are maintained by the OST Observatory 
+              at the Institute of Physics and Astronomy of the University of Potsdam,
+              <a href="mailto:ost-observatory@astro.physik.uni-potsdam.de"
+                >ost-observatory@astro.physik.uni-potsdam.de</a>.
+              Further details are given in the
+              <a href="impressum.html">legal notice</a>.
+            </p>
+
+            <h3>Contact for data protection matters</h3>
+            <p>
+              To exercise your rights, or if you have questions about how the
+              observatory services process data, please contact:
+            </p>
+            <address>
+              Dr. Rainer Hainich<br>
+              Universitätsstandort Golm, Haus 28<br>
+              Karl-Liebknecht-Str. 24/25<br>
+              14476 Potsdam, Germany<br>
+              Phone: +49 331 977-5351<br>
+              E-mail:
+              <a href="mailto:rhainich@astro.physik.uni-potsdam.de"
+                >rhainich@astro.physik.uni-potsdam.de</a>
+            </address>
+            <p>
+              Alternatively, you may request information from the Chief Information
+              Officer of the University of Potsdam (Am Neuen Palais 10, 14469 Potsdam).
+              Use of the
+              <a href="https://www.uni-potsdam.de/fileadmin/projects/cio/UP-Formular_Auskunftsbegehren.pdf"
+                >form</a> provided for this purpose is voluntary.
+            </p>
+
+            <h3>Data protection officer</h3>
+            <address>
+              Dr. Marek Kneis<br>
+              Am Neuen Palais 10<br>
+              14469 Potsdam, Germany<br>
+              Phone: +49 331 977-124409<br>
+              E-mail:
+              <a href="mailto:datenschutz@uni-potsdam.de">datenschutz@uni-potsdam.de</a>
+            </address>
+
+            <h3>Legal basis</h3>
+            <p>
+              Unless stated otherwise for an individual service, the legal basis for the
+              processing is Art. 6 (1) sentence 1 (e) GDPR in conjunction with § 5 (1)
+              BbgDSG and § 3 BbgHG. The processing is necessary for the performance of
+              the tasks of the University of Potsdam in research, teaching and public
+              outreach. Where employees are concerned, § 26 BbgDSG applies in addition.
+            </p>
+
+            <h3 id="en-logfiles">Server logfiles</h3>
+            <p>
+              Each time this website or one of the services is accessed, the following
+              data is written to logfiles for the purpose of operational and data
+              security: IP address, time of access, the pages and content elements
+              requested, HTTP status code, volume of data transferred, user agent
+              (browser and operating system used) and, where supplied, the referrer URL.
+            </p>
+            <p>
+              The applications also log sign-ins, failed sign-in attempts and errors,
+              each with the user name and IP address. Repeated failed sign-in attempts
+              can cause the IP address to be blocked temporarily.
+            </p>
+            <p>
+              Unless stated otherwise for an individual service, the logfiles are stored
+              for a maximum of seven days and are deleted afterwards.
+            </p>
+
+            <h3 id="en-cookies">Cookies and local storage</h3>
+            <p>
+              This home page sets no cookies and stores nothing in your browser.
+              Individual services set strictly necessary cookies, for example to
+              recognise you after signing in or to protect forms against misuse
+              (§ 25 (2) no. 2 TDDDG); they are listed for each service. Some services
+              also remember display settings (such as a light or dark theme) in your
+              browser’s local storage. These entries are not transmitted to the server.
+            </p>
+            <p>
+              None of the services uses cookies or other techniques for usage
+              statistics, analysis of user behaviour or advertising.
+            </p>
+
+            <h3>External content</h3>
+            <p>
+              All content, including fonts and scripts, is served from this server. The
+              only exception is the sky map in the <a href="#en-data-archive">data
+              archive</a>, which is loaded from the Centre de Données astronomiques de
+              Strasbourg (see there). Links to external websites transmit data to their
+              operators only once you follow them.
+            </p>
+
+            <h3 id="en-backups">Backups</h3>
+            <p>
+              To restore the services after a failure, their data is backed up daily to a
+              separate disk of the server and to another observatory computer in the same
+              room. Both are accessible only to the administrators. File backups reflect
+              the current state; deleted data disappears from them with the next daily
+              backup. Database backups are kept for at most six weeks, backups of the user
+              accounts of the directory service for at most 60 days. Deleted data is
+              therefore removed from all backups after 60 days at the latest. Camera
+              recordings are not backed up.
+            </p>
+
+            <h3>Recipients, third countries, automated decisions</h3>
+            <p>
+              Personal data is accessible only to the people entrusted with operating the
+              observatory and its services, and only to the extent their task requires.
+              Data is transmitted to third parties only where this is stated explicitly
+              for a service. Data is not transferred to countries outside the European
+              Union or the European Economic Area. Automated decision-making, including
+              profiling, does not take place.
+            </p>
+
+            <h3>Obligation to provide data</h3>
+            <p>
+              You are not obliged to provide personal data. However, the website cannot
+              be delivered without the data that arises technically from the connection,
+              and the access-restricted services can only be used with an account.
+            </p>
+
+            <h3 id="en-rights">Your rights</h3>
+            <p>
+              Subject to the statutory requirements, you have the right of access
+              (Art. 15 GDPR), rectification (Art. 16 GDPR), erasure (Art. 17 GDPR),
+              restriction of processing (Art. 18 GDPR), data portability (Art. 20 GDPR)
+              and the right to object to processing (Art. 21 GDPR). Please contact the
+              person named above.
+            </p>
+            <p>
+              You also have the right to lodge a complaint with the competent supervisory
+              authority:
+            </p>
+            <address>
+              Die Landesbeauftragte für den Datenschutz und für das Recht auf
+              Akteneinsicht Brandenburg<br>
+              Stahnsdorfer Damm 77<br>
+              14532 Kleinmachnow, Germany<br>
+              Phone: +49 33203 356-0<br>
+              E-mail:
+              <a href="mailto:poststelle@lda.brandenburg.de"
+                >poststelle@lda.brandenburg.de</a>
+            </address>
+
+            <h2 class="legal_part">Individual services</h2>
+            <p>
+              In addition to the general part, the following applies to the individual
+              services.
+            </p>
+
+            <h3 id="en-wiki">Wiki</h3>
+            <p>
+              The wiki (DokuWiki) can be read without signing in. Only observatory
+              members can edit it; they sign in with their observatory account. The
+              password is not stored in the wiki; it is passed to the observatory
+              directory service (LDAP) for verification. The user name, name, e-mail
+              address and group membership are taken from the directory service and kept
+              for the duration of the session.
+            </p>
+            <p>
+              Whenever a page is changed, the wiki records the user name, time and edit
+              summary in the page history. This keeps the content traceable and allows
+              errors or misuse to be corrected. IP addresses are not stored. The page 
+              history is kept for as long as the page exists.
+            </p>
+            <p>
+              The wiki sets a strictly necessary session cookie (<code>DokuWiki</code>)
+              that is deleted when you close the browser. If you choose “Remember me”
+              when signing in, a sign-in cookie (<code>DW…</code>) is set in addition;
+              while editing, a cookie holding editor settings (<code>DOKU_PREFS</code>)
+              may be set.
+            </p>
+
+            <h3 id="en-gallery">Image gallery</h3>
+            <p>
+              The gallery is a static website without sign-in, cookies or local storage.
+              For each image, it publishes who took it, or for lab courses and groups a
+              description of the group. This is done only with the consent of the
+              photographers, who have also agreed to the publication of the image under
+              the stated license (Art. 6 (1) sentence 1 (a) GDPR). You can withdraw your
+              consent to being named at any time with effect for the future; we then
+              remove your name and, on request, the image. Embedded metadata (such as
+              EXIF data with camera or location details) is removed before publication.
+              This information stays published for as long as the image is shown in the
+              gallery.
+            </p>
+
+            <h3 id="en-data-archive">Data archive</h3>
+            <p>
+              Public observation data can be searched and downloaded without signing in;
+              no cookies are set when doing so. In rare cases, the headers of the frames 
+              (FITS or SER headers) may contain the name of the observer.
+            </p>
+            <p>
+              You sign in with your observatory account. The user name, name, e-mail
+              address and group membership are taken from the directory service and
+              stored for managing permissions. When the observatory account is deleted,
+              the archive account is deactivated within a day; name and e-mail address
+              are removed, the user name remains in the history. Changes to observation
+              runs, objects and
+              access rights are recorded with the user and time in a change history and
+              an administration log. After two years the link to the person is removed;
+              the entries are kept without the user so that the data remains traceable.
+              For downloads, a job with the user (when signed in) and time is stored; the
+              ZIP archive created is deleted after 72 hours and the job itself 30 days
+              later. Expired sessions are deleted daily. To limit anonymous downloads, a
+              pseudonymised value (hash) of the IP address is cached for one hour.
+            </p>
+            <p>
+              After signing in, the strictly necessary cookies
+              <code>ostdata_sessionid</code> (session, at most 12 hours) and
+              <code>ostdata_csrftoken</code> (protection against form misuse, until the
+              browser is closed)
+              are set; the latter also before an anonymous download. Your colour theme is
+              stored in the browser’s local storage.
+            </p>
+            <p>
+              On the detail pages of astronomical objects, the archive shows an
+              interactive sky map (Aladin Lite). The program and the image tiles are
+              loaded directly from servers of the Centre de Données astronomiques de
+              Strasbourg (CDS), Université de Strasbourg / CNRS, 11 rue de l’Université,
+              67000 Strasbourg, France. In the process, CDS receives your IP address, the
+              time of the request and your user agent. The legal basis is Art. 6 (1)
+              sentence 1 (e) GDPR; the sky map is needed to put the data into scientific
+              context. The processing by CDS is subject to its own privacy terms.
+            </p>
+
+            <h3 id="en-allsky">Allsky camera</h3>
+            <p>
+              The allsky camera page shows images of the night sky and can be accessed
+              without signing in. The camera points at the sky and does not capture
+              people. The page sets no cookies.
+            </p>
+
+            <h3 id="en-weather-station">Weather station</h3>
+            <p>
+              The weather station’s readings are available without signing in and contain
+              no personal data. The public page sets no cookies. Display settings and the
+              time of the last refresh are stored
+              in the browser’s local storage. To protect the site against overload, the
+              IP address is cached for no more than two minutes.
+            </p>
+            <p>
+              The administration area is accessible only to administrators. Sign-ins and 
+              failed sign-in attempts are logged there with user name, IP address and user
+              agent so that suspicious sign-ins can be detected. Successful sign-ins are
+              deleted after 30 days, failed sign-in attempts once the lockout period of one
+              hour has passed. The sign-in page sets the strictly necessary cookie
+              <code>ost_weather_csrftoken</code> (protection against form misuse, until the
+              browser is closed), signing in the session cookie
+              <code>ost_weather_sessionid</code> (at most 12 hours); expired sessions are
+              deleted daily.
+            </p>
+
+            <h3 id="en-news">News</h3>
+            <p>
+              The articles are static pages without sign-in, cookies or local storage.
+              Only the general part applies.
+            </p>
+
+            <h3 id="en-status">Status dashboard</h3>
+            <p>
+              The dashboard shows the operating state of the observatory and coordinates
+              its use. It is accessible only to the people entrusted with operating the
+              observatory. A separate <a href="../ost_status/datenschutz">privacy notice
+              on the cameras</a> (German) applies to the camera images shown there.
+            </p>
+            <p>
+              <em>Sign-in.</em> You sign in with the user name and password of your
+              observatory account. The password is not stored; it is passed over an
+              encrypted connection to the observatory directory service (LDAP) for
+              verification. In the process, your user identifier, name, e-mail address
+              and group memberships are read; of these, only the user identifier, display
+              name and the groups relevant to access are kept for the duration of the
+              session. After five failed attempts, further attempts for the same
+              combination of user name and IP address are refused for a while. This
+              counter is held in memory only and is discarded after a few minutes.
+            </p>
+            <p>
+              <em>Cookie.</em> After signing in, the strictly necessary, cryptographically
+              signed cookie <code>ost_status_session</code> is set, containing your user
+              identifier, display name and groups. It is valid for at most 12 hours and is
+              deleted when you sign out.
+            </p>
+            <p>
+              <em>Observing session log.</em> Observing sessions are started at the
+              observatory’s control computer, which asks for a name and, optionally, the
+              target and planned duration. What is stored is the designation entered
+              there, the target, start, end, duration and the reason the session ended.
+              Signed-in users can view the log. It serves to make the use of the
+              instrument and technical faults during unattended operation traceable, and
+              records who made which observation, so that observers can be credited when
+              their data is later used in other projects or publications. The legal basis
+              is the observers' consent (Art. 6 (1) sentence 1 (a) GDPR); it can be
+              withdrawn at any time with effect for the future, in which case we remove
+              the name from the entries concerned. <strong>Entering a name is
+              voluntary.</strong> For guided observations a group designation is
+              sufficient. Entries are kept permanently as part of the documentation of the
+              observation data.
+            </p>
+
+            <h3 id="en-nextcloud">Cloud (Nextcloud)</h3>
+            <p>
+              The Nextcloud is available only to observatory members, who sign in with
+              their observatory account. The user name, name, e-mail address and group
+              membership are taken from the observatory directory service (LDAP). The
+              Nextcloud also stores the files and shares you create, as well as
+              calendars, contacts and Deck boards. The
+              Nextcloud logs activity on files and shares so that you can trace changes;
+              these entries are deleted after 90 days. Sign-in attempts are recorded with
+              the IP address to protect against password guessing; like all logfiles,
+              the application log is deleted after seven days.
+            </p>
+            <p>
+              Content is stored until you delete it or your account is closed. Deleted
+              files stay in the trash bin for at most 30 days, older versions of files
+              are kept for at most one year. The Nextcloud sets only strictly
+              necessary cookies for the session and, if you choose “Remember me”, for
+              staying signed in.
+            </p>
+
+            <h3 id="en-inventory">Inventory</h3>
+            <p>
+              The inventory is accessible only to observatory members in the authorised
+              groups. You sign in with your observatory account. The password is not
+              stored in the inventory; it is passed to the observatory directory service
+              (LDAP) for verification. The user name, name, e-mail address and group
+              membership are taken from the directory service. When the observatory
+              account is deleted, the inventory account is deactivated within a day; name
+              and e-mail address are removed, the user name remains in the history. For
+              items and stocktakes,
+              the system records who created,
+              last changed or scanned them.
+            </p>
+            <p>
+              <em>Loans.</em> When a device is lent, the borrower’s name and, optionally,
+              contact details, a note, the loan, due and return dates, and the person
+              recording the loan are stored. Only supervisors and administrators can see
+              these details. When a loan is overdue, the person who recorded it and, if an
+              e-mail address was given, the borrower receive a reminder by e-mail. The
+              details are kept for one year after the return so that damage or missing
+              accessories noticed later can be traced. After that, the name, contact
+              details and note are removed automatically; only the device and the dates
+              of the loan are kept.
+            </p>
+            <p>
+              Photos of items are stored without metadata, shown only to signed-in users
+              and deleted together with the item. When barcodes are scanned, the camera
+              image is analysed in the browser only; just the recognised code is
+              transmitted. Expired sessions are deleted daily.
+            </p>
+            <p>
+              Cookies: <code>ost_inventory_csrftoken</code> (protection against form
+              misuse, already set on the sign-in page, until the browser is closed) and, after
+              signing in,
+              <code>ost_inventory_sessionid</code> (session, 12 hours). Your colour theme
+              is stored in the browser’s local storage.
+            </p>
+
+            <h3 id="en-events">Event registration</h3>
+            <p>
+              For events with limited capacity (for example the Long Night of Astronomy
+              or open days) you can register online. The purpose is to allocate places,
+              to communicate with you about your registration and to admit you on the
+              day of the event.
+            </p>
+            <p>
+              <em>Data processed.</em> Name, e-mail address, number of persons and
+              selected time slot (mandatory), as well as the time of registration and
+              confirmation. To protect against mass registrations, the IP address is
+              stored separately for two hours; it is not stored with the registration
+              itself.
+            </p>
+            <p>
+              <em>Procedure.</em> After submitting the form you receive an e-mail with a
+              confirmation link. If you do not confirm within 30 minutes, the
+              registration is deleted. After confirmation you receive an e-mail with
+              links to an overview, to cancellation and to your admission pass. The QR
+              code on the admission pass contains only a random code, no names or e-mail
+              addresses; the time of check-in is stored at the entrance. If you cancel,
+              your registration is deleted immediately. The e-mails are sent via the
+              university’s mail server.
+            </p>
+            <p>
+              <em>Recipients.</em> Registrations are visible only to the organisers of
+              the event. They receive a daily summary of new registrations with names and
+              e-mail addresses.
+            </p>
+            <p>
+              <em>Storage period.</em> Personal registration data is anonymised
+              automatically two weeks after the event. Only anonymous statistics (such as
+              the number of registrations and participants per time slot) are kept.
+              Database backups are deleted after two weeks, so the registration data is
+              gone from them too at the latest four weeks after the event. The
+              application log contains no e-mail addresses and is kept for no more than
+              seven days.
+            </p>
+            <p>
+              <em>Cookie.</em> When the registration form is opened, the strictly
+              necessary session cookie <code>ost_events_session</code> is set to protect
+              the form against misuse. It is deleted when you close the browser.
+            </p>
+            <p>
+              Registration is not possible without the mandatory details.
+            </p>
+          </section>
+
+        </div>
+      </div>
+
+      <div class='titel_container'>
+        <div class='titel_right' lang="de">
+          Datenschutz
+        </div>
+      </div>
+      <div class='content_container center'>
+        <div class='text_box'>
+
           <section class="legal_section" lang="de">
-            <h2>Datenschutzerklärung</h2>
+            <h2 id="datenschutzerklaerung">Datenschutzerklärung</h2>
             <p class="legal_note">
               Informationen zur Verarbeitung personenbezogener Daten nach Art. 13 DSGVO
               für diese Website und die von hier aus erreichbaren Dienste der Sternwarte.
-              Stand: September 2026. <a href="#en-privacy">English version below.</a>
+              Stand: September 2026.
             </p>
 
             <nav class="legal_toc" aria-label="Inhalt">
@@ -539,471 +1019,6 @@
             </p>
             <p>
               Ohne die Pflichtangaben ist eine Anmeldung nicht möglich.
-            </p>
-          </section>
-
-          <section class="legal_section" lang="en">
-            <h2 id="en-privacy">Privacy Policy</h2>
-            <p class="legal_note">
-              This is a courtesy translation. In case of discrepancies, the German
-              version above prevails.
-            </p>
-            <p class="legal_note">
-              Information on the processing of personal data pursuant to Art. 13 GDPR for
-              this website and the observatory services that can be reached from it.
-              Last updated: September 2026.
-            </p>
-
-            <nav class="legal_toc" aria-label="Contents">
-              <p><strong>General information</strong></p>
-              <ul>
-                <li><a href="#en-controller">Controller and contacts</a></li>
-                <li><a href="#en-logfiles">Logfiles</a></li>
-                <li><a href="#en-cookies">Cookies, external content</a></li>
-                <li><a href="#en-backups">Backups</a></li>
-                <li><a href="#en-rights">Your rights</a></li>
-              </ul>
-              <p><strong>Individual services</strong></p>
-              <ul>
-                <li><a href="#en-wiki">Wiki</a></li>
-                <li><a href="#en-gallery">Image gallery</a></li>
-                <li><a href="#en-data-archive">Data archive</a></li>
-                <li><a href="#en-allsky">Allsky camera</a></li>
-                <li><a href="#en-weather-station">Weather station</a></li>
-                <li><a href="#en-news">News</a></li>
-                <li><a href="#en-status">Status dashboard</a></li>
-                <li><a href="#en-nextcloud">Cloud (Nextcloud)</a></li>
-                <li><a href="#en-inventory">Inventory</a></li>
-                <li><a href="#en-events">Event registration</a></li>
-              </ul>
-            </nav>
-
-            <h3>Scope</h3>
-            <p>
-              This privacy policy applies to the website of the Observatory (OST) of the 
-              University of Potsdam and to all services operated at this address. The general
-              part applies to all services; what individual services process in addition
-              is described in the respective section.
-            </p>
-            <p>
-              A separate <a href="../ost_status/datenschutz">privacy notice on the camera
-              surveillance</a> (German) applies to the video surveillance of the
-              observatory.
-            </p>
-
-            <h3 id="en-controller">Controller</h3>
-            <address>
-              University of Potsdam<br>
-              represented by its President, Prof. Oliver Günther, Ph.D.<br>
-              Am Neuen Palais 10<br>
-              14469 Potsdam, Germany<br>
-              Phone: +49 331 977-0<br>
-              Internet: <a href="https://www.uni-potsdam.de">www.uni-potsdam.de</a>
-            </address>
-            <p>
-              This website and the services are maintained by the OST Observatory 
-              at the Institute of Physics and Astronomy of the University of Potsdam,
-              <a href="mailto:ost-observatory@astro.physik.uni-potsdam.de"
-                >ost-observatory@astro.physik.uni-potsdam.de</a>.
-              Further details are given in the
-              <a href="impressum.html">legal notice</a>.
-            </p>
-
-            <h3>Contact for data protection matters</h3>
-            <p>
-              To exercise your rights, or if you have questions about how the
-              observatory services process data, please contact:
-            </p>
-            <address>
-              Dr. Rainer Hainich<br>
-              Universitätsstandort Golm, Haus 28<br>
-              Karl-Liebknecht-Str. 24/25<br>
-              14476 Potsdam, Germany<br>
-              Phone: +49 331 977-5351<br>
-              E-mail:
-              <a href="mailto:rhainich@astro.physik.uni-potsdam.de"
-                >rhainich@astro.physik.uni-potsdam.de</a>
-            </address>
-            <p>
-              Alternatively, you may request information from the Chief Information
-              Officer of the University of Potsdam (Am Neuen Palais 10, 14469 Potsdam).
-              Use of the
-              <a href="https://www.uni-potsdam.de/fileadmin/projects/cio/UP-Formular_Auskunftsbegehren.pdf"
-                >form</a> provided for this purpose is voluntary.
-            </p>
-
-            <h3>Data protection officer</h3>
-            <address>
-              Dr. Marek Kneis<br>
-              Am Neuen Palais 10<br>
-              14469 Potsdam, Germany<br>
-              Phone: +49 331 977-124409<br>
-              E-mail:
-              <a href="mailto:datenschutz@uni-potsdam.de">datenschutz@uni-potsdam.de</a>
-            </address>
-
-            <h3>Legal basis</h3>
-            <p>
-              Unless stated otherwise for an individual service, the legal basis for the
-              processing is Art. 6 (1) sentence 1 (e) GDPR in conjunction with § 5 (1)
-              BbgDSG and § 3 BbgHG. The processing is necessary for the performance of
-              the tasks of the University of Potsdam in research, teaching and public
-              outreach. Where employees are concerned, § 26 BbgDSG applies in addition.
-            </p>
-
-            <h3 id="en-logfiles">Server logfiles</h3>
-            <p>
-              Each time this website or one of the services is accessed, the following
-              data is written to logfiles for the purpose of operational and data
-              security: IP address, time of access, the pages and content elements
-              requested, HTTP status code, volume of data transferred, user agent
-              (browser and operating system used) and, where supplied, the referrer URL.
-            </p>
-            <p>
-              The applications also log sign-ins, failed sign-in attempts and errors,
-              each with the user name and IP address. Repeated failed sign-in attempts
-              can cause the IP address to be blocked temporarily.
-            </p>
-            <p>
-              Unless stated otherwise for an individual service, the logfiles are stored
-              for a maximum of seven days and are deleted afterwards.
-            </p>
-
-            <h3 id="en-cookies">Cookies and local storage</h3>
-            <p>
-              This home page sets no cookies and stores nothing in your browser.
-              Individual services set strictly necessary cookies, for example to
-              recognise you after signing in or to protect forms against misuse
-              (§ 25 (2) no. 2 TDDDG); they are listed for each service. Some services
-              also remember display settings (such as a light or dark theme) in your
-              browser’s local storage. These entries are not transmitted to the server.
-            </p>
-            <p>
-              None of the services uses cookies or other techniques for usage
-              statistics, analysis of user behaviour or advertising.
-            </p>
-
-            <h3>External content</h3>
-            <p>
-              All content, including fonts and scripts, is served from this server. The
-              only exception is the sky map in the <a href="#en-data-archive">data
-              archive</a>, which is loaded from the Centre de Données astronomiques de
-              Strasbourg (see there). Links to external websites transmit data to their
-              operators only once you follow them.
-            </p>
-
-            <h3 id="en-backups">Backups</h3>
-            <p>
-              To restore the services after a failure, their data is backed up daily to a
-              separate disk of the server and to another observatory computer in the same
-              room. Both are accessible only to the administrators. File backups reflect
-              the current state; deleted data disappears from them with the next daily
-              backup. Database backups are kept for at most six weeks, backups of the user
-              accounts of the directory service for at most 60 days. Deleted data is
-              therefore removed from all backups after 60 days at the latest. Camera
-              recordings are not backed up.
-            </p>
-
-            <h3>Recipients, third countries, automated decisions</h3>
-            <p>
-              Personal data is accessible only to the people entrusted with operating the
-              observatory and its services, and only to the extent their task requires.
-              Data is transmitted to third parties only where this is stated explicitly
-              for a service. Data is not transferred to countries outside the European
-              Union or the European Economic Area. Automated decision-making, including
-              profiling, does not take place.
-            </p>
-
-            <h3>Obligation to provide data</h3>
-            <p>
-              You are not obliged to provide personal data. However, the website cannot
-              be delivered without the data that arises technically from the connection,
-              and the access-restricted services can only be used with an account.
-            </p>
-
-            <h3 id="en-rights">Your rights</h3>
-            <p>
-              Subject to the statutory requirements, you have the right of access
-              (Art. 15 GDPR), rectification (Art. 16 GDPR), erasure (Art. 17 GDPR),
-              restriction of processing (Art. 18 GDPR), data portability (Art. 20 GDPR)
-              and the right to object to processing (Art. 21 GDPR). Please contact the
-              person named above.
-            </p>
-            <p>
-              You also have the right to lodge a complaint with the competent supervisory
-              authority:
-            </p>
-            <address>
-              Die Landesbeauftragte für den Datenschutz und für das Recht auf
-              Akteneinsicht Brandenburg<br>
-              Stahnsdorfer Damm 77<br>
-              14532 Kleinmachnow, Germany<br>
-              Phone: +49 33203 356-0<br>
-              E-mail:
-              <a href="mailto:poststelle@lda.brandenburg.de"
-                >poststelle@lda.brandenburg.de</a>
-            </address>
-
-            <h2 class="legal_part">Individual services</h2>
-            <p>
-              In addition to the general part, the following applies to the individual
-              services.
-            </p>
-
-            <h3 id="en-wiki">Wiki</h3>
-            <p>
-              The wiki (DokuWiki) can be read without signing in. Only observatory
-              members can edit it; they sign in with their observatory account. The
-              password is not stored in the wiki; it is passed to the observatory
-              directory service (LDAP) for verification. The user name, name, e-mail
-              address and group membership are taken from the directory service and kept
-              for the duration of the session.
-            </p>
-            <p>
-              Whenever a page is changed, the wiki records the user name, time and edit
-              summary in the page history. This keeps the content traceable and allows
-              errors or misuse to be corrected. IP addresses are not stored. The page 
-              history is kept for as long as the page exists.
-            </p>
-            <p>
-              The wiki sets a strictly necessary session cookie (<code>DokuWiki</code>)
-              that is deleted when you close the browser. If you choose “Remember me”
-              when signing in, a sign-in cookie (<code>DW…</code>) is set in addition;
-              while editing, a cookie holding editor settings (<code>DOKU_PREFS</code>)
-              may be set.
-            </p>
-
-            <h3 id="en-gallery">Image gallery</h3>
-            <p>
-              The gallery is a static website without sign-in, cookies or local storage.
-              For each image, it publishes who took it, or for lab courses and groups a
-              description of the group. This is done only with the consent of the
-              photographers, who have also agreed to the publication of the image under
-              the stated license (Art. 6 (1) sentence 1 (a) GDPR). You can withdraw your
-              consent to being named at any time with effect for the future; we then
-              remove your name and, on request, the image. Embedded metadata (such as
-              EXIF data with camera or location details) is removed before publication.
-              This information stays published for as long as the image is shown in the
-              gallery.
-            </p>
-
-            <h3 id="en-data-archive">Data archive</h3>
-            <p>
-              Public observation data can be searched and downloaded without signing in;
-              no cookies are set when doing so. In rare cases, the headers of the frames 
-              (FITS or SER headers) may contain the name of the observer.
-            </p>
-            <p>
-              You sign in with your observatory account. The user name, name, e-mail
-              address and group membership are taken from the directory service and
-              stored for managing permissions. When the observatory account is deleted,
-              the archive account is deactivated within a day; name and e-mail address
-              are removed, the user name remains in the history. Changes to observation
-              runs, objects and
-              access rights are recorded with the user and time in a change history and
-              an administration log. After two years the link to the person is removed;
-              the entries are kept without the user so that the data remains traceable.
-              For downloads, a job with the user (when signed in) and time is stored; the
-              ZIP archive created is deleted after 72 hours and the job itself 30 days
-              later. Expired sessions are deleted daily. To limit anonymous downloads, a
-              pseudonymised value (hash) of the IP address is cached for one hour.
-            </p>
-            <p>
-              After signing in, the strictly necessary cookies
-              <code>ostdata_sessionid</code> (session, at most 12 hours) and
-              <code>ostdata_csrftoken</code> (protection against form misuse, until the
-              browser is closed)
-              are set; the latter also before an anonymous download. Your colour theme is
-              stored in the browser’s local storage.
-            </p>
-            <p>
-              On the detail pages of astronomical objects, the archive shows an
-              interactive sky map (Aladin Lite). The program and the image tiles are
-              loaded directly from servers of the Centre de Données astronomiques de
-              Strasbourg (CDS), Université de Strasbourg / CNRS, 11 rue de l’Université,
-              67000 Strasbourg, France. In the process, CDS receives your IP address, the
-              time of the request and your user agent. The legal basis is Art. 6 (1)
-              sentence 1 (e) GDPR; the sky map is needed to put the data into scientific
-              context. The processing by CDS is subject to its own privacy terms.
-            </p>
-
-            <h3 id="en-allsky">Allsky camera</h3>
-            <p>
-              The allsky camera page shows images of the night sky and can be accessed
-              without signing in. The camera points at the sky and does not capture
-              people. The page sets no cookies.
-            </p>
-
-            <h3 id="en-weather-station">Weather station</h3>
-            <p>
-              The weather station’s readings are available without signing in and contain
-              no personal data. The public page sets no cookies. Display settings and the
-              time of the last refresh are stored
-              in the browser’s local storage. To protect the site against overload, the
-              IP address is cached for no more than two minutes.
-            </p>
-            <p>
-              The administration area is accessible only to administrators. Sign-ins and 
-              failed sign-in attempts are logged there with user name, IP address and user
-              agent so that suspicious sign-ins can be detected. Successful sign-ins are
-              deleted after 30 days, failed sign-in attempts once the lockout period of one
-              hour has passed. The sign-in page sets the strictly necessary cookie
-              <code>ost_weather_csrftoken</code> (protection against form misuse, until the
-              browser is closed), signing in the session cookie
-              <code>ost_weather_sessionid</code> (at most 12 hours); expired sessions are
-              deleted daily.
-            </p>
-
-            <h3 id="en-news">News</h3>
-            <p>
-              The articles are static pages without sign-in, cookies or local storage.
-              Only the general part applies.
-            </p>
-
-            <h3 id="en-status">Status dashboard</h3>
-            <p>
-              The dashboard shows the operating state of the observatory and coordinates
-              its use. It is accessible only to the people entrusted with operating the
-              observatory. A separate <a href="../ost_status/datenschutz">privacy notice
-              on the cameras</a> (German) applies to the camera images shown there.
-            </p>
-            <p>
-              <em>Sign-in.</em> You sign in with the user name and password of your
-              observatory account. The password is not stored; it is passed over an
-              encrypted connection to the observatory directory service (LDAP) for
-              verification. In the process, your user identifier, name, e-mail address
-              and group memberships are read; of these, only the user identifier, display
-              name and the groups relevant to access are kept for the duration of the
-              session. After five failed attempts, further attempts for the same
-              combination of user name and IP address are refused for a while. This
-              counter is held in memory only and is discarded after a few minutes.
-            </p>
-            <p>
-              <em>Cookie.</em> After signing in, the strictly necessary, cryptographically
-              signed cookie <code>ost_status_session</code> is set, containing your user
-              identifier, display name and groups. It is valid for at most 12 hours and is
-              deleted when you sign out.
-            </p>
-            <p>
-              <em>Observing session log.</em> Observing sessions are started at the
-              observatory’s control computer, which asks for a name and, optionally, the
-              target and planned duration. What is stored is the designation entered
-              there, the target, start, end, duration and the reason the session ended.
-              Signed-in users can view the log. It serves to make the use of the
-              instrument and technical faults during unattended operation traceable, and
-              records who made which observation, so that observers can be credited when
-              their data is later used in other projects or publications. The legal basis
-              is the observers' consent (Art. 6 (1) sentence 1 (a) GDPR); it can be
-              withdrawn at any time with effect for the future, in which case we remove
-              the name from the entries concerned. <strong>Entering a name is
-              voluntary.</strong> For guided observations a group designation is
-              sufficient. Entries are kept permanently as part of the documentation of the
-              observation data.
-            </p>
-
-            <h3 id="en-nextcloud">Cloud (Nextcloud)</h3>
-            <p>
-              The Nextcloud is available only to observatory members, who sign in with
-              their observatory account. The user name, name, e-mail address and group
-              membership are taken from the observatory directory service (LDAP). The
-              Nextcloud also stores the files and shares you create, as well as
-              calendars, contacts and Deck boards. The
-              Nextcloud logs activity on files and shares so that you can trace changes;
-              these entries are deleted after 90 days. Sign-in attempts are recorded with
-              the IP address to protect against password guessing; like all logfiles,
-              the application log is deleted after seven days.
-            </p>
-            <p>
-              Content is stored until you delete it or your account is closed. Deleted
-              files stay in the trash bin for at most 30 days, older versions of files
-              are kept for at most one year. The Nextcloud sets only strictly
-              necessary cookies for the session and, if you choose “Remember me”, for
-              staying signed in.
-            </p>
-
-            <h3 id="en-inventory">Inventory</h3>
-            <p>
-              The inventory is accessible only to observatory members in the authorised
-              groups. You sign in with your observatory account. The password is not
-              stored in the inventory; it is passed to the observatory directory service
-              (LDAP) for verification. The user name, name, e-mail address and group
-              membership are taken from the directory service. When the observatory
-              account is deleted, the inventory account is deactivated within a day; name
-              and e-mail address are removed, the user name remains in the history. For
-              items and stocktakes,
-              the system records who created,
-              last changed or scanned them.
-            </p>
-            <p>
-              <em>Loans.</em> When a device is lent, the borrower’s name and, optionally,
-              contact details, a note, the loan, due and return dates, and the person
-              recording the loan are stored. Only supervisors and administrators can see
-              these details. When a loan is overdue, the person who recorded it and, if an
-              e-mail address was given, the borrower receive a reminder by e-mail. The
-              details are kept for one year after the return so that damage or missing
-              accessories noticed later can be traced. After that, the name, contact
-              details and note are removed automatically; only the device and the dates
-              of the loan are kept.
-            </p>
-            <p>
-              Photos of items are stored without metadata, shown only to signed-in users
-              and deleted together with the item. When barcodes are scanned, the camera
-              image is analysed in the browser only; just the recognised code is
-              transmitted. Expired sessions are deleted daily.
-            </p>
-            <p>
-              Cookies: <code>ost_inventory_csrftoken</code> (protection against form
-              misuse, already set on the sign-in page, until the browser is closed) and, after
-              signing in,
-              <code>ost_inventory_sessionid</code> (session, 12 hours). Your colour theme
-              is stored in the browser’s local storage.
-            </p>
-
-            <h3 id="en-events">Event registration</h3>
-            <p>
-              For events with limited capacity (for example the Long Night of Astronomy
-              or open days) you can register online. The purpose is to allocate places,
-              to communicate with you about your registration and to admit you on the
-              day of the event.
-            </p>
-            <p>
-              <em>Data processed.</em> Name, e-mail address, number of persons and
-              selected time slot (mandatory), as well as the time of registration and
-              confirmation. To protect against mass registrations, the IP address is
-              stored separately for two hours; it is not stored with the registration
-              itself.
-            </p>
-            <p>
-              <em>Procedure.</em> After submitting the form you receive an e-mail with a
-              confirmation link. If you do not confirm within 30 minutes, the
-              registration is deleted. After confirmation you receive an e-mail with
-              links to an overview, to cancellation and to your admission pass. The QR
-              code on the admission pass contains only a random code, no names or e-mail
-              addresses; the time of check-in is stored at the entrance. If you cancel,
-              your registration is deleted immediately. The e-mails are sent via the
-              university’s mail server.
-            </p>
-            <p>
-              <em>Recipients.</em> Registrations are visible only to the organisers of
-              the event. They receive a daily summary of new registrations with names and
-              e-mail addresses.
-            </p>
-            <p>
-              <em>Storage period.</em> Personal registration data is anonymised
-              automatically two weeks after the event. Only anonymous statistics (such as
-              the number of registrations and participants per time slot) are kept.
-              Database backups are deleted after two weeks, so the registration data is
-              gone from them too at the latest four weeks after the event. The
-              application log contains no e-mail addresses and is kept for no more than
-              seven days.
-            </p>
-            <p>
-              <em>Cookie.</em> When the registration form is opened, the strictly
-              necessary session cookie <code>ost_events_session</code> is set to protect
-              the form against misuse. It is deleted when you close the browser.
-            </p>
-            <p>
-              Registration is not possible without the mandatory details.
             </p>
           </section>
 

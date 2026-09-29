@@ -964,13 +964,8 @@ body {
   outline-offset: 2px;
 }
 
-/* Legal pages (Impressum / Datenschutz): bilingual, German section first. */
-.legal_section + .legal_section {
-  margin-top: 2.5rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-}
-
+/* Legal pages (Impressum / Datenschutz): bilingual, one text box per language — English first,
+   German (authoritative) below; see .legal_page at the end of this file. */
 .legal_section h2 {
   margin: 0 0 1rem;
   font-size: 1.4rem;
@@ -1051,5 +1046,22 @@ body {
 
   .text-page .content_container {
     justify-content: flex-start;
+  }
+}
+
+/* Legal pages (Impressum / Datenschutz): one title per language in the left column, level with
+   the start of that language's text box. Markup: .main_content.legal_page holding
+   title + box for English, then title + box for German — two grid rows. Several blocks above
+   centre .main_content vertically, which would push each title into the middle of its long
+   section; this rule comes last to override them. */
+@media screen and (min-width: 920px) {
+  .legal_page {
+    align-items: start;
+    row-gap: 1.5rem;
+  }
+
+  /* Box top = content_container padding (0.75rem) + text_box margin (2em at 1.1em). */
+  .legal_page .titel_container {
+    padding-top: 2.95rem;
   }
 }
